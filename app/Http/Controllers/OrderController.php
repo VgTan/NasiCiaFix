@@ -32,7 +32,7 @@ class OrderController extends Controller
         $order->user_name = $user->name;
         $order->total_price = $request->total_price;
         $order->save();
-        $order->order_id = "ORDER".$order->id;
+        $order->order_id = "ORDER ".$order->id;
         $order->save();
         for ($i = 0; $i < count($request->name); $i++) {
             $name = $request->name[$i];

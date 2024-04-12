@@ -44,7 +44,7 @@ function handleSubmit(e) {
               </div>
               <button type="submit" className="w-full block bg-yellow-500 hover:bg-amber-400 focus:bg-amber-400 text-white font-semibold rounded-lg px-4 py-3 mt-6">Sign In</button>
             </form>
-            <p className="mt-8">Already have an account? <a href="#" className="text-blue-500 hover:text-blue-700 font-semibold">Login to existing account</a></p>
+            <p className="mt-8">Already have an account? <a href="/login" className="text-blue-500 hover:text-blue-700 font-semibold">Login to existing account</a></p>
           </div>
         </div>
         <div className="hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen xl:flex xl:justify-center">
