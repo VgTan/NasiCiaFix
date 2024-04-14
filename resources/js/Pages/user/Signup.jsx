@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { router } from '@inertiajs/react';
 
 function SignUp() {
@@ -56,6 +55,7 @@ function handleSubmit(e) {
           </div>
         </div>
       </div>
+
   );
 }
 

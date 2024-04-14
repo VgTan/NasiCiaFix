@@ -55,10 +55,10 @@ const Cart = ({ menus }) => {
             <Navbar />
             <div className="pt-32 px-28 flex flex-row font-nunito">
                 <div className="w-full mr-10">
-                <div className="flex flex-wrap">
-                    <MdOutlineShoppingCart className="text-2xl font-bold"/>
-                    <h1 className="font-bold text-2xl mb-8 ml-2 -mt-1">YOUR CART</h1>
-                </div>
+                    <div className="flex flex-wrap">
+                        <MdOutlineShoppingCart className="text-2xl font-bold"/>
+                        <h1 className="font-bold text-2xl mb-8 ml-2 -mt-1">YOUR CART</h1>
+                    </div>
                 <form action="" className="">
                     {Object.entries(storedItems).map(([id, quantity]) => (
                         quantity !== 0 ? (

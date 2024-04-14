@@ -1,6 +1,7 @@
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { MdOutlineSort, MdOutlineShoppingBasket } from "react-icons/md";
 import { BsTelephone } from "react-icons/bs";
+import { MdPersonOutline } from "react-icons/md";
 
 export default function Navbar() {
     return (
@@ -42,13 +43,15 @@ export default function Navbar() {
                 <div className="flex flex-wrap justify-center mr-20">
     
                     <>
-                    <a href="/signup">Sign Up</a>
-                    <a href="/login">Log In</a>
+                    <a href="/signup" className="ml-3 font-extrabold mr-8 flex items-center hover:text-white"> 
+                        <MdPersonOutline size="1.3em" class="mr-2"/>Account
+                    </a>
                     </>
              
                     <a className="flex items-center" href="/cart">
-                        <MdOutlineShoppingBasket size="1.8em" class="mr-6"/>
-                        <span className="bg-[#353434] text-white py-4 px-10 rounded-tr-[50px] rounded-br-[20px] rounded-bl-[50px] rounded-tl-[20px] hover:shadow-inner hover:bg-[#4e4d4d]" >Your Cart</span>
+                        <span className="flex flex-wrap bg-[#353434] text-white py-4 px-10 rounded-tr-[50px] rounded-br-[20px] rounded-bl-[50px] rounded-tl-[20px] hover:shadow-inner hover:bg-[#4e4d4d]" >
+                            <MdOutlineShoppingBasket size="1.3em" class="mr-2"/>Your Cart
+                        </span>
                     </a>
                 </div>
             </div>
