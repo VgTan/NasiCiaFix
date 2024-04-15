@@ -48,6 +48,6 @@ class AdminController extends Controller
     }
 
     public function handle(Request $request) {
-        dd($request->all());
+        // dd($request->all());
     }
 }

@@ -2,11 +2,29 @@ import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { MdOutlineSort, MdOutlineShoppingBasket } from "react-icons/md";
 import { BsTelephone } from "react-icons/bs";
 import { MdPersonOutline } from "react-icons/md";
+import React, { useState, useEffect } from "react";
 
 export default function Navbar() {
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     return (
         <>
-            <div className="fixed z-[999] flex justify-between w-full h-20 items-center top-3 font-nunito mx-10">
+             <div className={`fixed z-[999] flex justify-between w-full h-20 items-center top-0 py-4 font-nunito mx-10 ${scrolled ? 'bg-white' : ''}`}>
                 <div className="flex items-center justify-evenly w-2/4 h-full">
                     <div className="logonama flex gap-0 items-center">
                         <a href="/" className="w-20">
