@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MidtransController;
@@ -19,9 +20,6 @@ use Inertia\Inertia;
 //         'phpVersion' => PHP_VERSION,
 //     ]);
 // });
-Route::get('/login', function () {
-    return view('user.login');
-});
 
 Route::controller(MenuController::class)->group(function() {
     Route::get('/', 'index')->name('homeMenu');
@@ -35,7 +33,7 @@ Route::controller(OrderController::class)->group(function() {
 });
 
 Route::controller(MidtransController::class)->group(function() {
-    Route::post('/payment', 'pay')->middleware(LoggedIn::class);
+    Route::post('/payment', 'pay')->name("payment")->middleware(LoggedIn::class);
 });
 
 Route::controller(AuthController::class)->group(function() {
@@ -47,19 +45,21 @@ Route::controller(AuthController::class)->group(function() {
     Route::post('/submit-login', 'login')->middleware(isLoggedIn::class);
     
     Route::get('/logout', 'logout');
-
 });
 
+Route::controller(AdminController::class)->group(function() {
+    Route::get('/admin', 'index');
+    Route::post('/admin-login', 'login');
 
+    Route::get('/dashboard', 'dash')->name('dashboard');
+    Route::post('/admin-handle', 'handle');
+
+});
 
 // Route::get('/admin', function() {
 //     return Inertia::render('admin/Login');
 // });
 
-return Inertia::render('admin/Login');
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
