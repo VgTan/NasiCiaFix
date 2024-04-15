@@ -12,30 +12,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
-Route::controller(MenuController::class)->group(function() {
-    Route::get('/', 'index')->name('homeMenu');
-    Route::get('/cart', 'cart');
-
-});
-
-Route::controller(OrderController::class)->group(function() {
-    Route::post('/checkout', 'order')->middleware(LoggedIn::class);
-    Route::get('/history', 'history')->middleware(LoggedIn::class);
-});
-
-Route::controller(MidtransController::class)->group(function() {
-    Route::post('/payment', 'pay')->name("payment")->middleware(LoggedIn::class);
-});
-
 Route::controller(AuthController::class)->group(function() {
     Route::get('/admin', 'LoginPage')->name('admin.login');
     Route::get('/signup', 'signupIndex')->middleware(isLoggedIn::class);
@@ -47,24 +23,30 @@ Route::controller(AuthController::class)->group(function() {
     Route::get('/logout', 'logout');
 });
 
+Route::controller(MenuController::class)->group(function() {
+    Route::get('/', 'index')->name('homeMenu');
+    Route::get('/cart', 'cart');
+});
+
+Route::controller(OrderController::class)->group(function() {
+    Route::post('/checkout', 'order')->middleware(LoggedIn::class);
+    Route::get('/history', 'history')->middleware(LoggedIn::class);
+});
+
+Route::controller(MidtransController::class)->group(function() {
+    Route::post('/payment', 'pay')->name("payment")->middleware(LoggedIn::class);
+});
+
+
+
 Route::controller(AdminController::class)->group(function() {
     Route::get('/admin', 'index');
-    Route::post('/admin-login', 'login');
+    Route::post('/admin-login', 'loginadmin');
 
     Route::get('/dashboard', 'dash')->name('dashboard');
     Route::post('/admin-handle', 'handle');
 
 });
 
-// Route::get('/admin', function() {
-//     return Inertia::render('admin/Login');
-// });
-
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 require __DIR__.'/auth.php';

@@ -16,7 +16,7 @@ class AdminController extends Controller
         return Inertia::render('Admin/Login');
     }
 
-    public function login(Request $request) {
+    public function loginadmin(Request $request) {
         // dd($request->all());
         $loginData = $request->validate([
             'email' => 'required|email',

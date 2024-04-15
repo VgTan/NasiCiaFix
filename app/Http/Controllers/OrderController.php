@@ -55,10 +55,34 @@ class OrderController extends Controller
             // OrderDetail::create(['user_name' => $user, 'menu_name' => $name, 'qty' => $quantity, 'price' => $menu->price*$quantity]);
         }
         // Set your Merchant Server Key
-        
+        $order_id = $order->order_id;
+        $total_price = $order->total_price;
+
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => $order_id,
+                'gross_amount' => $order->total_price,
+            ),
+            'customer_details' => array(
+                'first_name' => $user->name,
+                'last_name' => '',
+                // 'email' => $user->email,
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
         // dd($snapToken);
-        return redirect('/history');
-        // return redirect("/");
-        // Order::create($request->all());
+        return view('checkout', compact('snapToken', 'order'));
+
+        // dd($snapToken);
+        // return redirect('/history');
     }
 }

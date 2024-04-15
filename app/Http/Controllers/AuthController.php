@@ -73,9 +73,4 @@ class AuthController extends Controller
         Auth::logout();
         return redirect("/login");
     }
-    public function LoginPage() {
-        $aa = 1;
-        return Inertia::render('admin/Login' , [
-        ]);
-    }
 }
