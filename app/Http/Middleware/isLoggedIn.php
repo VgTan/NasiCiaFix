@@ -17,7 +17,7 @@ class isLoggedIn
     {
         if(Auth()->user()) {
             if(Auth()->user()->usertype == 'user') {
-                return redirect('/');
+                return redirect('/history');
             }
         }
         return $next($request);

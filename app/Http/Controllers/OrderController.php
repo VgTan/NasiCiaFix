@@ -9,13 +9,16 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 class OrderController extends Controller
 {
-    public function index() {
+    public function history() {
         $user = Auth()->user();
         $order = Order::where('user_id', $user->id)->get();
-        // dd($order);
+        $od = OrderDetail::all();
+
+        // dd($od);
         return Inertia::render('user/History', [
             'user' => $user,
-            'order' => $order
+            'order' => $order,
+            'od' => $od
         ]);
     }
     public function order(Request $request) {
@@ -25,12 +28,14 @@ class OrderController extends Controller
         $validate = $request->validate([
             'total_price' => 'required',
             'name' => 'required',
-            'qty' => 'required'
+            'qty' => 'required',
+            'table_num' => 'required'
         ]);
         $order = new Order;
         $order->user_id = $user->id;
         $order->user_name = $user->name;
         $order->total_price = $request->total_price;
+        $order->table_number = $request->table_num;
         $order->save();
         $order->order_id = "ORDER ".$order->id;
         $order->save();
@@ -52,8 +57,7 @@ class OrderController extends Controller
         // Set your Merchant Server Key
         
         // dd($snapToken);
-        return redirect('/status');
-        return view('checkout', compact('snapToken', 'order'));
+        return redirect('/history');
         // return redirect("/");
         // Order::create($request->all());
     }

@@ -16,9 +16,11 @@ return new class extends Migration
             $table->String('order_id')->nullable();
             $table->String('user_id');
             $table->String('user_name');
+            $table->String('table_number');
             // $table->String('menu_name');
             // $table->integer('qty');
             $table->integer('total_price');
+            $table->enum('progress', ['Done', 'Preparing', 'Waiting'])->default('Waiting');
             $table->enum('status', ['Unpaid', 'Paid'])->default('Unpaid');
             $table->timestamps();
         });

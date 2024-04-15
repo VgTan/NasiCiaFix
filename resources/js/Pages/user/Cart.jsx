@@ -8,7 +8,7 @@ const Cart = ({ menus }) => {
     const [storedItems, setStoredItems] = useState(JSON.parse(localStorage.getItem('selectedItems')) || {});
     const [name, setName] = useState('');
     const [qty, setQty] = useState('');
-    const [clientKey, setClientKey] = useState('');
+    const [table_num, setTableNum] = useState('');
 
     useEffect(() => {
         const names = Object.entries(storedItems).map(([id, quantity]) => {
@@ -48,7 +48,7 @@ const Cart = ({ menus }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        router.post("/checkout", {total_price, name, qty})
+        router.post("/checkout", {total_price, name, qty, table_num})
     }
     return (
         <>
@@ -125,6 +125,10 @@ const Cart = ({ menus }) => {
                     <div className="flex justify-between mb-10 font-semibold">
                         <p className="">Total Price include Tax:</p>
                         <p className="">Rp {total_price_tax}</p>
+                    </div>
+                    <div className="flex justify-between mb-10 font-semibold items-center">
+                        <p className="">Table Number:</p>
+                        <input type="number" value={table_num} onChange={(e) => setTableNum(e.target.value)}/>
                     </div>
                     <form onSubmit={handleSubmit} className='drop-shadow-sm'>
                         {/* {Object.entries(storedItems).map(([id, quantity]) => (

@@ -48,6 +48,7 @@ class MidtransController extends Controller
                 $order = Order::where("order_id",$request->order_id)->first();
                 // dd($order);
                 $order->update(['status' => 'Paid']);
+                $order->update(['progress' => 'Preparing']);
             }
         }
         return back();

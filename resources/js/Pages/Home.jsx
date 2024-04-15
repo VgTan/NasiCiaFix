@@ -129,7 +129,7 @@ const Home = ({ menus }) => {
                 </div>
                 <div className="mt-12 px-16">
                     <div className="flex mt-10 md:mt-[60px] flex-col md:flex-row">
-                        <div className="md:w-[230px] sticky-element">
+                        <div className="md:w-[230px] sticky">
                             <div id="sticky">
                                 <ul class="overflow-auto flex whitespace-nowrap md:whitespace-normal flex-row md:flex-col md:space-y-8 items-end border-b b-[#EAEAEA] md:border-b-0 pb-4 md:pb-0 mb-4 md:mb-0">
                                 {menus.filter((menu, index, self) => 

@@ -3,7 +3,7 @@ import { router } from "@inertiajs/react";
 import { useState } from "react";
 import { MdOutlineHistoryEdu } from "react-icons/md";
 
-const History = ({ user, order }) => {
+const History = ({ user, order, od }) => {
     const [order_id, setOrderId] = useState('');
     const [total_price, setTotalPrice] = useState('');
 
@@ -34,7 +34,8 @@ const History = ({ user, order }) => {
                     <form key={key} id={key} className="bg-white shadow-xl rounded-md p-4 mb-6" onSubmit={handleSubmit}>
                         
                         <div className="grid grid-cols-4 gap-4 mb-4 w-full">
-                            <p className="text-xl font-bold">Order #{orderItem.id} | Table Number: 4</p>
+                            <p className="text-xl font-bold">Order #{orderItem.id} | Table Number: {orderItem.table_number}</p>
+                            <p className={`${orderItem.progress == 'Waiting' ? 'text-orange-500' : orderItem.progress == 'Preparing' ? 'text-black' : 'text-green-500'}`}>{orderItem.progress}</p>
                         </div>
 
                         <div className="mb-4">
@@ -52,13 +53,18 @@ const History = ({ user, order }) => {
                         
                         <div className="mb-4">
                             <div className="grid grid-cols-1">
-                                <p className="text-md text-gray-700 font-thin">Item Ordered: 4</p>
+                                <p className="text-md text-gray-700 font-thin">Item Ordered: 
+                                {od.filter(details => details.order_id == orderItem.id).length}</p>
                             </div>
                             <div className="grid grid-cols-1">
-                                <p className="text-lg font-semibold">Chicken, Steak, Soup, Honey Muffin</p>
+                            {od.filter(details => details.order_id == orderItem.id).map((details, key) => (
+                                <p key={key} className="text-lg font-semibold">{details.menu_name}</p>
+                            ))}
                             </div>
                         </div>
-                        <button type="submit" onClick={() => handlePick(orderItem.order_id, orderItem.total_price)} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Proceed to Payment</button>
+                        {orderItem.status == 'Unpaid' && (
+                            <button type="submit" onClick={() => handlePick(orderItem.order_id, orderItem.total_price)} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Proceed to Payment</button>
+                        )}
                     </form>
                 ))}
             </div>
