@@ -24,17 +24,17 @@ export default function Navbar() {
     }, []);
     return (
         <>
-             <div className={`fixed z-[999] md:flex md:justify-between w-full md:h-20 items-center md:py-4 font-nunito mx-10 ${scrolled ? 'md:bg-white md:bg-opacity-85' : ''} transition duration-700`}>
-                <div className="md:flex items-center md:justify-evenly w-2/4 h-full">
+             <div className={`fixed z-[999] flex justify-between w-full h-20 items-center py-4 font-nunito sm:px-10 px-7 ${scrolled ? 'bg-white bg-opacity-85' : ''} transition duration-700`}>
+                <div className="flex items-center md:justify-evenly w-1/2 h-full">
                     <div className="logonama flex gap-0 items-center">
-                        <a href="/" className="w-20">
+                        <a href="/" className="max-w-20 min-w-16">
                             <img src="/images/logo.png" alt="" />
                         </a>
                     </div>
-                    <div className="md:flex md:justify-center gap-2">
-                    <MdOutlineSort size="1.5em" className=" "/>
+                    <div className="md:hidden lg:flex justify-center sm:gap-2 hidden">
+                        <MdOutlineSort size="1.5em" className=" "/>
                         <form action="">
-                            <select name="Category" id="" class="appearance-none border-none p-0 pr-7 font-extrabold bg-transparent">
+                            <select name="Category" id="" className="appearance-none border-none p-0 pr-7 font-extrabold bg-transparent">
                                 <option value="">Categories</option>
                                 <option value="main">Main Dishes</option>
                                 <option value="side">Side Dishes</option>
@@ -42,12 +42,12 @@ export default function Navbar() {
                             </select>
                         </form>
                     </div>
-                    <div className="md:flex md:justify-center gap-3">
-                        <a className="flex items-center">
+                    <div className="md:flex hidden justify-center gap-3">
+                        {/* <a className="flex items-center">
                             <BsTelephone />
                             <span className="ml-3 font-extrabold" >Contact Us</span>
-                        </a>
-                        <div className="md:flex justify-center gap-5 ml-7 md:items-center">
+                        </a> */}
+                        <div className="flex justify-center gap-5 items-center">
                         <a href="">
                             <FaInstagram size="1.5em" class="transition duration-300 hover:text-pink-500"/>
                         </a>
@@ -56,19 +56,20 @@ export default function Navbar() {
                         </a>
                         </div>
                     </div>
-                    <div className=""></div>
                 </div>
-                <div className="md:flex justify-center mr-20">
-    
-                    <>
-                    <a href="/signup" className="ml-3 font-extrabold mr-8 md:flex items-center transition duration-300 hover:text-yellow-500"> 
+                <div className="flex justify-end lg:mr-20 w-1/2">
+                    <a href="/signup" className="md:hidden font-extrabold mr-5 flex items-center transition duration-300 hover:text-yellow-500 text-base"> 
+                        <MdPersonOutline size="1.5em" class=""/>
+                    </a>
+                    <a href="/signup" className="lg:ml-3 hidden font-extrabold lg:mr-8 md:mr-5 md:flex items-center transition duration-300 hover:text-yellow-500 lg:sm:text-base md:text-sm"> 
                         <MdPersonOutline size="1.3em" class="mr-2"/>Account / History
                     </a>
-                    </>
-             
                     <a className="flex items-center" href="/cart">
-                        <span className="md:flex md:flex-wrap bg-[#353434] text-white py-4 px-10 rounded-tr-[50px] rounded-br-[20px] rounded-bl-[50px] rounded-tl-[20px] hover:shadow-inner transition duration-300 hover:bg-[#4e4d4d]" >
+                        <span className=" hidden md:flex bg-[#353434] text-white lg:py-4 py-2 lg:px-10 px-5 rounded-tr-[50px] rounded-br-[20px] rounded-bl-[50px] rounded-tl-[20px] hover:shadow-inner transition duration-300 hover:bg-[#4e4d4d] text-xs lg:text-base" >
                             <MdOutlineShoppingBasket size="1.3em" class="mr-2"/>Your Cart
+                        </span>
+                        <span className="md:hidden flex bg-[#353434] text-white py-3 px-6 rounded-tr-[50px] rounded-br-[20px] rounded-bl-[50px] rounded-tl-[20px] hover:shadow-inner transition duration-300 hover:bg-[#4e4d4d] text-xs md:text-base" >
+                            <MdOutlineShoppingBasket size="1.4em" class=""/>
                         </span>
                     </a>
                 </div>
