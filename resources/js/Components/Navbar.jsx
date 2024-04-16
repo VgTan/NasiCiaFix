@@ -24,7 +24,7 @@ export default function Navbar() {
     }, []);
     return (
         <>
-             <div className={`fixed z-[999] flex justify-between w-full h-20 items-center top-0 py-4 font-nunito mx-10 ${scrolled ? 'bg-white' : ''}`}>
+             <div className={`fixed z-[999] flex justify-between w-full h-20 items-center top-0 py-4 font-nunito mx-10 ${scrolled ? 'bg-white bg-opacity-85' : ''} transition duration-700`}>
                 <div className="flex items-center justify-evenly w-2/4 h-full">
                     <div className="logonama flex gap-0 items-center">
                         <a href="/" className="w-20">
@@ -61,13 +61,13 @@ export default function Navbar() {
                 <div className="flex flex-wrap justify-center mr-20">
     
                     <>
-                    <a href="/signup" className="ml-3 font-extrabold mr-8 flex items-center transition duration-300 hover:text-white"> 
-                        <MdPersonOutline size="1.3em" class="mr-2"/>Account
+                    <a href="/signup" className="ml-3 font-extrabold mr-8 flex items-center transition duration-300 hover:text-yellow-500"> 
+                        <MdPersonOutline size="1.3em" class="mr-2"/>Account / History
                     </a>
                     </>
              
                     <a className="flex items-center" href="/cart">
-                        <span className="flex flex-wrap bg-[#353434] text-white py-4 px-10 rounded-tr-[50px] rounded-br-[20px] rounded-bl-[50px] rounded-tl-[20px] transition duration-300 hover:shadow-inner transition duration-300 hover:bg-[#4e4d4d]" >
+                        <span className="flex flex-wrap bg-[#353434] text-white py-4 px-10 rounded-tr-[50px] rounded-br-[20px] rounded-bl-[50px] rounded-tl-[20px] hover:shadow-inner transition duration-300 hover:bg-[#4e4d4d]" >
                             <MdOutlineShoppingBasket size="1.3em" class="mr-2"/>Your Cart
                         </span>
                     </a>

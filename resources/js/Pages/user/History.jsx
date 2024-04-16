@@ -6,8 +6,6 @@ import { MdOutlineHistoryEdu } from "react-icons/md";
 const History = ({ user, order, od }) => {
     const [order_id, setOrderId] = useState('');
     const [total_price, setTotalPrice] = useState('');
-
-    localStorage.removeItem('selectedItems');
     
     const handlePick = (index, total) => {
         setOrderId(index);

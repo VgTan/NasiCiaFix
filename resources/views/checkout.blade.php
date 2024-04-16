@@ -44,6 +44,7 @@
     </div>
 </div>
 <script type="text/javascript">
+  localStorage.removeItem('selectedItems');
   // For example trigger on button clicked, or any time you need
   var payButton = document.getElementById('pay-button');
   payButton.addEventListener('click', function () {
@@ -66,7 +67,7 @@
         alert('you closed the popup without finishing the payment');
       }
     })
-  });
+});
 </script>
 </body>
 </html>
