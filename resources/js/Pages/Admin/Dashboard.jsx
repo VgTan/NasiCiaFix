@@ -1,5 +1,6 @@
 import { router } from "@inertiajs/react";
 import { useState } from "react";
+import { MdOutlineHistoryEdu } from "react-icons/md";
 
 const Dashboard = ( {order, od} ) => {
     const [update_prog, setUpdateProg] = useState('');
@@ -10,40 +11,52 @@ const Dashboard = ( {order, od} ) => {
     }
     return (
         <>
-        <div className="">
+        <div className="font-nunito md:m-20 m-5">
+            <div className="flex flex-wrap -mb-4 md:mb-0">
+                <MdOutlineHistoryEdu className="text-xl md:text-2xl font-bold"/>
+                <h1 className="font-bold text-xl md:text-2xl mb-4 md:mb-8 ml-2 -mt-1">CUSTOMER ORDERS</h1>
+            </div>
             {order.map((items, key) => (
-                <form onSubmit={handleSubmit} className="bg-white shadow-xl rounded-md p-4 mb-6">
-                <div className="flex justify-start item-start space-y-2 flex-col">
-                    <h1 className="text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Order #{items.id} | Table Number: {items.table_number}</h1>
-                    <p className="text-base font-medium leading-6 text-gray-600">Customer Name: {items.user_name}</p>
-                </div>
-                <div className="grid grid-cols-4 gap-4 mb-4 w-full">
-                    <div className="">{items.status}</div>
-                    <div className="">Progress: 
-                    <select name={key} id={key} onChange={(e) => setUpdateProg(e.target.value)}>
-                        {items.progress !== 'Done' ? (
-                            <>
-                                <option value={items.progress} className="">{items.progress}</option>
-                                <option value="Done">Done</option>
-                            </>
-                        ) : (
-                            <option value="Done">Done</option>
-                        )}
-                    </select>
-                    </div>
-                </div>
-                <div className="">
-                    {od.filter(details => details.order_id == items.id).map((order_details, key) => (
-                        <div className="flex gap-2" key={key}>
-                            <p>{order_details.menu_name}</p>
-                            <p className="">Quantity: {order_details.qty}</p>
-                            <p className="">Unit Price: {order_details.price}</p>
-                            <p className="">Total Price: {order_details.qty * order_details.price}</p>
+                <form onSubmit={handleSubmit} key={key} className="bg-white border border-zinc-200 shadow-xl rounded-md p-4 mb-6">
+                    <div className="grid md:grid-cols-2 mb-4">
+                        <div className="space-y-2">
+                            <h1 className="text-base md:text-xl lg:text-2xl font-bold leading-7 lg:leading-9 text-gray-800">Order #{items.id} | Table Number: {items.table_number}</h1>
+                            <p className="text-sm font-bold leading-6 text-gray-600">Customer Name: {items.user_name}</p>
                         </div>
-                    ))}
-                    {od.filter(details => details.order_id == items.id).reduce((total, order_details) => total + (order_details.qty * order_details.price), 0)}
-                </div>
-                <button>Submit</button>
+                        <div className="flex md:place-self-end mr-10 md:mb-6 mt-3">
+                            <p className="text-right text-base md:text-xl font-bold leading-6 text-[#42754C] mr-3 mt-1">Status:</p>
+                            <select name={key} id={key} onChange={(e) => setUpdateProg(e.target.value)} className="border border-gray-300 rounded-md pl-4 pr-10 py-1 h-8 md:h">
+                                {items.progress !== 'Done' ? (
+                                    <>
+                                        <option value={items.progress} className="">{items.progress}</option>
+                                        <option value="Done">Done</option>
+                                    </>
+                                ) : (
+                                    <option value="Done">Done</option>
+                                )}
+                            </select>
+                        </div>  
+                    </div>
+                    <div className="">
+                            <div className="grid grid-cols-4 gap-4 mb-2">
+                                <p className="font-bold text-sm md:text-lg">Item</p>
+                                <p className="font-bold text-sm md:text-lg">Unit Price</p>
+                                <p className="font-bold text-sm md:text-lg">Qty</p>
+                                <p className="font-bold text-sm md:text-lg">SubTotal</p>
+                            </div>
+                        {od.filter(details => details.order_id == items.id).map((order_details, index) => (
+                            <div className="grid grid-cols-4 gap-4" key={index}>
+                                <div className="w-3/4 overflow-x-auto">
+                                    <p className="font-semibold whitespace-nowrap text-sm md:text-base">{order_details.menu_name}</p> 
+                                </div>          
+                                <p className="font-semibold text-sm md:text-base">{order_details.price}</p>
+                                <p className="border border-slate-200 font-semibold text-sm md:text-base w-min p-1 px-3">{order_details.qty}</p>
+                                <p className="font-semibold text-sm md:text-base">{order_details.qty * order_details.price}</p>
+                            </div>
+                        ))}
+                        <p className="text-lg font-bold mt-4">Total Price: <span className="text-[#42754C]">{od.filter(details => details.order_id == items.id).reduce((total, order_details) => total + (order_details.qty * order_details.price), 0)}</span></p>
+                    </div>
+                    <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mt-4">Submit</button>
                 </form>
             ))}        
         </div>
