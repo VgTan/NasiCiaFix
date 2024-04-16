@@ -42,11 +42,11 @@ export default function Navbar() {
                             </select>
                         </form>
                     </div>
-                    <div className="md:flex hidden justify-center gap-3">
-                        {/* <a className="flex items-center">
+                    <div className="flex md:ml-0 ml-10 justify-center gap-3">
+                        <a className="items-center lg:flex hidden">
                             <BsTelephone />
                             <span className="ml-3 font-extrabold" >Contact Us</span>
-                        </a> */}
+                        </a>
                         <div className="flex justify-center gap-5 items-center">
                         <a href="">
                             <FaInstagram size="1.5em" class="transition duration-300 hover:text-pink-500"/>
