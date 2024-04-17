@@ -155,7 +155,7 @@ const Home = ({ menus }) => {
                                     Chicken Rice Bowl
                                 </div>
                                 {/* <div className="grid gap-5 md:gap-6 grid-cols-1 md:grid-cols-3"> */}
-                                <div className="flex flex-wrap gap-10">
+                                <div className="flex flex-wrap gap-5">
                                     {menus
                                         .filter(
                                             (menu) =>
