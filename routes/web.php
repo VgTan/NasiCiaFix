@@ -6,6 +6,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\Admin;
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isLoggedIn;
 use App\Http\Middleware\LoggedIn;
@@ -24,8 +25,8 @@ Route::controller(AuthController::class)->group(function() {
 });
 
 Route::controller(MenuController::class)->group(function() {
-    Route::get('/', 'index')->name('homeMenu');
-    Route::get('/cart', 'cart')->middleware(LoggedIn::class);
+    Route::get('/', 'index')->name('homeMenu')->middleware(Admin::class);
+    Route::get('/cart', 'cart')->middleware(Admin::class);
 });
 
 Route::controller(OrderController::class)->group(function() {
