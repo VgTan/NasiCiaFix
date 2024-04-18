@@ -51,6 +51,6 @@ class MidtransController extends Controller
                 $order->update(['progress' => 'Preparing']);
             }
         }
-        return back();
+        return redirect()->route("history");
     }
 }

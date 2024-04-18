@@ -6,6 +6,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isLoggedIn;
 use App\Http\Middleware\LoggedIn;
 use Illuminate\Foundation\Application;
@@ -23,13 +24,13 @@ Route::controller(AuthController::class)->group(function() {
 });
 
 Route::controller(MenuController::class)->group(function() {
-    Route::get('/', 'index')->name('homeMenu');
-    Route::get('/cart', 'cart');
+    Route::get('/', 'index')->name('homeMenu')->middleware(LoggedIn::class);
+    Route::get('/cart', 'cart')->middleware(LoggedIn::class);
 });
 
 Route::controller(OrderController::class)->group(function() {
     Route::post('/checkout', 'order')->middleware(LoggedIn::class);
-    Route::get('/history', 'history')->middleware(LoggedIn::class);
+    Route::get('/history', 'history')->name("history")->middleware(LoggedIn::class);
 });
 
 Route::controller(MidtransController::class)->group(function() {
@@ -42,8 +43,8 @@ Route::controller(AdminController::class)->group(function() {
     Route::get('/admin', 'index');
     Route::post('/admin-login', 'loginadmin');
 
-    Route::get('/dashboard', 'dash')->name('dashboard');
-    Route::post('/admin-handle', 'handle');
+    Route::get('/dashboard', 'dash')->name('dashboard')->middleware(isAdmin::class);
+    Route::post('/admin-handle', 'handle')->middleware(isAdmin::class);
 
 });
 

@@ -42,11 +42,11 @@ export default function Navbar() {
                             </select>
                         </form>
                     </div>
-                    <div className="md:flex hidden justify-center gap-3">
-                        {/* <a className="flex items-center">
+                    <div className="flex md:ml-0 ml-10 justify-center gap-3">
+                        <a className="items-center lg:flex hidden">
                             <BsTelephone />
                             <span className="ml-3 font-extrabold" >Contact Us</span>
-                        </a> */}
+                        </a>
                         <div className="flex justify-center gap-5 items-center">
                         <a href="">
                             <FaInstagram size="1.5em" class="transition duration-300 hover:text-pink-500"/>
@@ -61,7 +61,7 @@ export default function Navbar() {
                     <a href="/signup" className="md:hidden font-extrabold mr-5 flex items-center transition duration-300 hover:text-yellow-500 text-base"> 
                         <MdPersonOutline size="1.5em" class=""/>
                     </a>
-                    <a href="/signup" className="lg:ml-3 hidden font-extrabold lg:mr-8 md:mr-5 md:flex items-center transition duration-300 hover:text-yellow-500 lg:sm:text-base md:text-sm"> 
+                    <a href="/signup" className="lg:ml-3 hidden font-extrabold lg:mr-8 md:mr-5 md:flex items-center transition duration-300 hover:text-gray-700 lg:sm:text-base md:text-sm"> 
                         <MdPersonOutline size="1.3em" class="mr-2"/>Account / History
                     </a>
                     <a className="flex items-center" href="/cart">

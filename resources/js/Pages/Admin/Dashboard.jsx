@@ -4,25 +4,33 @@ import { MdOutlineHistoryEdu } from "react-icons/md";
 
 const Dashboard = ( {order, od} ) => {
     const [update_prog, setUpdateProg] = useState('');
+    const [id, setId] = useState('');
 
+    const handleSelected = (selected_id) => {
+        setId(selected_id);
+    }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        router.post('/admin-handle', {update_prog});
+        router.post('/admin-handle', {update_prog, id});
     }
     return (
         <>
-        <div className="font-nunito md:m-20 m-5">
+        <div className="flex justify-end p-10">
+            <a href="/logout" className="font-bold text-xl md:text-2xl mb-4 md:mb-8 ml-2 -mt-1 text-red-500">LOGOUT</a>
+        </div>
+        <div className="font-nunito md:m-20 m-5 md:mt-0 mt-0">
             <div className="flex flex-wrap -mb-4 md:mb-0">
                 <MdOutlineHistoryEdu className="text-xl md:text-2xl font-bold"/>
                 <h1 className="font-bold text-xl md:text-2xl mb-4 md:mb-8 ml-2 -mt-1">CUSTOMER ORDERS</h1>
             </div>
-            {order.map((items, key) => (
+            {order.filter(orders => orders.status == 'Paid' && orders.progress != 'Done').map((items, key) => (
                 <form onSubmit={handleSubmit} key={key} className="bg-white border border-zinc-200 shadow-xl rounded-md p-4 mb-6">
                     <div className="grid md:grid-cols-2 mb-4">
                         <div className="space-y-2">
                             <h1 className="text-base md:text-xl lg:text-2xl font-bold leading-7 lg:leading-9 text-gray-800">Order #{items.id} | Table Number: {items.table_number}</h1>
                             <p className="text-sm font-bold leading-6 text-gray-600">Customer Name: {items.user_name}</p>
                         </div>
+
                         <div className="flex md:place-self-end mr-10 md:mb-6 mt-3">
                             <p className="text-right text-base md:text-xl font-bold leading-6 text-[#42754C] mr-3 mt-1">Status:</p>
                             <select name={key} id={key} onChange={(e) => setUpdateProg(e.target.value)} className="border border-gray-300 rounded-md pl-4 pr-10 py-1 h-8 md:h">
@@ -56,7 +64,7 @@ const Dashboard = ( {order, od} ) => {
                         ))}
                         <p className="text-lg font-bold mt-4">Total Price: <span className="text-[#42754C]">{od.filter(details => details.order_id == items.id).reduce((total, order_details) => total + (order_details.qty * order_details.price), 0)}</span></p>
                     </div>
-                    <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mt-4">Submit</button>
+                    <button type="submit" onClick={() => handleSelected(items.order_id)} className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mt-4">Submit</button>
                 </form>
             ))}        
         </div>

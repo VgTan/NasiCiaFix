@@ -52,7 +52,7 @@ const Cart = ({ menus }) => {
     }
     return (
         <>
-            {/* <Navbar /> */}
+            <Navbar />
             <div className="pt-32 px-4 md:px-20 flex flex-col md:flex-col lg:flex-row font-nunito">
                 <div className="w-full md:w-1/2 mr-0 md:mr-10 mb-8 md:mb-0 lg:w-full">
                     <div className="flex flex-wrap">    

@@ -15,10 +15,11 @@ class isLoggedIn
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth()->user()) {
-            if(Auth()->user()->usertype == 'user') {
-                return redirect('/history');
-            }
+        if(Auth()->user() && Auth()->user()->usertype == 'user') {
+            return redirect('/history');
+        }
+        else if(Auth()->user() && Auth()->user()->usertype == 'admin') {
+            return redirect('/dashboard');
         }
         return $next($request);
     }
