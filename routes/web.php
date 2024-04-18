@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::controller(AuthController::class)->group(function() {
-    Route::get('/admin', 'LoginPage')->name('admin.login');
     Route::get('/signup', 'signupIndex')->middleware(isLoggedIn::class);
     Route::post('/submit-signup', 'signup')->middleware(isLoggedIn::class);
 
