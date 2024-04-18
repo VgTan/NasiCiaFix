@@ -24,7 +24,7 @@ Route::controller(AuthController::class)->group(function() {
 });
 
 Route::controller(MenuController::class)->group(function() {
-    Route::get('/', 'index')->name('homeMenu')->middleware(LoggedIn::class);
+    Route::get('/', 'index')->name('homeMenu');
     Route::get('/cart', 'cart')->middleware(LoggedIn::class);
 });
 
