@@ -40,13 +40,29 @@ const Home = ({ menus }) => {
 
     return (
         <>
+        <div>
+            <ul class='circles'>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
         <div className="absolute"></div>
+        <div class="pattern-wavy pattern-yellow-500 pattern-bg-white 
+  pattern-size-32 pattern-opacity-10"></div>
             <div className="absolute right-0 overflow-hidden md:px-12 z-[-1]">
                 <div className="bg-yellow-500 md:p-72 rounded-bl-[100px] md:-skew-x-[11deg] lg:translate-x-20 md:translate-x-52 lg:scale-x-110 md:block hidden"></div>
             </div>
             <Navbar />
             <div className="md:px-10 md:py-20 py-16 font-nunito z-1 overflow-x-hidden">
-                <div className="rounded-xl md:p-10 p-8 flex flex-wrap w-full">
+                <div className="rounded-xl md:p-10 p-8 flex flex-wrap w-full ">
                     <div className="md:w-1/2 w-full md:grid gap-3">
                         <div className="text-right md:w-1/2 lg:w-full">
                             <div className="lg:text-6xl text-4xl font-bold text-left">
