@@ -40,20 +40,6 @@ const Home = ({ menus }) => {
 
     return (
         <>
-        <div>
-            <ul class='circles'>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
         <div className="absolute"></div>
         <div class="pattern-wavy pattern-yellow-500 pattern-bg-white 
   pattern-size-32 pattern-opacity-10"></div>
@@ -61,8 +47,24 @@ const Home = ({ menus }) => {
                 <div className="bg-yellow-500 md:p-72 rounded-bl-[100px] md:-skew-x-[11deg] lg:translate-x-20 md:translate-x-52 lg:scale-x-110 md:block hidden"></div>
             </div>
             <Navbar />
+            <div className="absolute w-full h-screen z-[-1] left-0 top-0 bg-yellow-500"></div>
+            <div className="absolute w-full h-screen z-[-1] left-0 top-0 curves"></div>
+            <div>
+                <ul class='circles'>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
             <div className="md:px-10 md:py-20 py-16 font-nunito z-1 overflow-x-hidden">
-                <div className="rounded-xl md:p-10 p-8 flex flex-wrap w-full ">
+                <div className="rounded-xl md:p-10 p-8 flex flex-wrap w-full">
                     <div className="md:w-1/2 w-full md:grid gap-3">
                         <div className="text-right md:w-1/2 lg:w-full">
                             <div className="lg:text-6xl text-4xl font-bold text-left">
@@ -170,6 +172,7 @@ const Home = ({ menus }) => {
                                 <div id="Chicken Rice Bowl" className="text-xl text-start font-bold mb-3 text-[#42754C]">
                                     Chicken Rice Bowl
                                 </div>
+                    
                                 {/* <div className="grid gap-5 md:gap-6 grid-cols-1 md:grid-cols-3"> */}
                                 <div className="flex flex-wrap gap-5">
                                     {menus
@@ -197,6 +200,8 @@ const Home = ({ menus }) => {
                                             />
                                         ))}
                                 </div>
+                    
+                    
                                 {/* Fish Rice Bowl */}
                                 <div className="mb-5 mt-10">
                                     <div id="Fish Rice Bowl" className="text-xl text-start font-bold mb-3 text-[#42754C]">
@@ -229,6 +234,7 @@ const Home = ({ menus }) => {
                                             />
                                         ))}
                                 </div>
+                    
                                 {/* Shrimp Rice Bowl */}
                                 <div className="mb-5 mt-10">
                                     <div id="Shrimp Rice Bowl" className="text-xl text-start font-bold mb-3 text-[#42754C]">
@@ -261,6 +267,7 @@ const Home = ({ menus }) => {
                                             />
                                         ))}
                                 </div>
+                    
                                 {/* Beef Rice Bowl */}
                                 <div className="mb-5 mt-10">
                                     <div id="Beef Rice Bowl" className="text-xl text-start font-bold mb-3 text-[#42754C]">
@@ -294,7 +301,20 @@ const Home = ({ menus }) => {
                                         ))}
                                 </div>
                             </div>
-
+                            <div>
+                                <ul class='circles'>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
                             {/* Drink */}
                             <div className="Drink mt-10">
                                 <div className="mb-5 sticky top-0">
@@ -325,7 +345,20 @@ const Home = ({ menus }) => {
                                         ))}
                                 </div>
                             </div>
-
+                            <div>
+                                <ul class='circles'>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
                             {/* MENTAI RICE */}
                             <div className="MENTAI RICE mt-10">
                                 <div className="mb-5 sticky top-0">
@@ -357,7 +390,20 @@ const Home = ({ menus }) => {
                                         ))}
                                 </div>
                             </div>
-
+                            <div>
+                                <ul class='circles'>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
                             {/* NUSANTARA */}
                             <div className="NUSANTARA mt-10">
                                 <div className="mb-5 sticky top-0">
@@ -389,7 +435,6 @@ const Home = ({ menus }) => {
                                         ))}
                                 </div>
                             </div>
-
                             {/* SNACK */}
                             <div className="SNACK mt-10">
                                 <div className="mb-5 sticky top-0">

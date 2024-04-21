@@ -3,6 +3,28 @@
 @tailwind components;
 @tailwind utilities;
 
+.curves::before {
+	content: '';
+	display: block;
+	position: absolute;
+	border-radius: 100% 50%;
+	width: 80%;
+	height: 100%;
+	background-color: white;
+	transform: translate(35%, 85%);
+}
+
+.curves::after {
+	content: '';
+	display: block;
+	position: absolute;
+	border-radius: 100%;
+	width: 80%;
+	height: 100%;
+	background-color: rgb(234 179 8);
+	transform: translate(-25%, 15%);
+}
+
 .circles {
 	position: absolute;
 	bottom: 0;
@@ -20,7 +42,7 @@
 	height: 20px;
 	background: rgba(96, 183, 199, 0.1);
 	animation: animate 25s linear infinite;
-	bottom: calc(-150px - 40vh);
+	bottom: calc(-150px - 80vh);
 }
 
 .circles li:nth-child(1) {
