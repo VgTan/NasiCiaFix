@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/Components/Navbar";
 import CategoryCard from "@/Components/Card/CategoryCard";
 import Card from "@/Components/Card/Card";
@@ -9,8 +9,13 @@ import { TbShoppingBagPlus } from "react-icons/tb";
 const Home = ({ menus }) => {
     const storedItems = JSON.parse(localStorage.getItem('selectedItems')) || {};
     const [selectedItems, setSelectedItems] = useState({});
+    const [searchResults, setSearchResults] = useState([]);
     const [isCartOpen, setIsCartOpen] = useState(false);
-
+    const [originalItems, setOriginalItems] = useState([]);
+    const [search, setSearch] = useState('');
+    const [itemname, setItemName] = useState('');
+    var filter;
+    var item = document.querySelectorAll('.all_menu');
     const addSelectedItems = (id) => {
         setSelectedItems((prevState) => ({
             ...prevState,
@@ -33,6 +38,30 @@ const Home = ({ menus }) => {
         }
     }
     
+    useEffect(() => {
+        setOriginalItems([...document.querySelectorAll('.all_menu')]);
+    }, []);
+
+    const handleSearch = (e) => {
+        setSearch(e.target.value.toUpperCase());
+    };
+
+    useEffect(() => {
+        const filteredResults = originalItems.filter(item => {
+            const txtValue = item.textContent || item.innerText;
+            return txtValue.toUpperCase().indexOf(search) > -1;
+        });
+        const updatedResults = filteredResults.map(item => {
+            const txtValue = item.textContent || item.innerText;
+            const separatorIndex = txtValue.toUpperCase().indexOf("RP");
+            const itemName = txtValue.substring(0, separatorIndex).trim();
+            return {
+                itemName: itemName,
+                element: item
+            };
+        });
+        setSearchResults(updatedResults);
+    }, [search, originalItems]);
 
     const handleAddToCart = () => {
         setIsCartOpen(true);
@@ -102,7 +131,7 @@ const Home = ({ menus }) => {
                                 <div className="bg-white border border-slate-200 items-center justify-between w-full flex md:p-2 md:mb-10 mb-5 sticky top-5 rounded-tr-[50px] rounded-br-[20px] rounded-bl-[50px] rounded-tl-[20px]">
                                     <form className="flex justify-between w-full" action="">
                                         <input
-                                            type="text"
+                                            type="text" onChange={handleSearch} value={search}
                                             className="bg-transparent border-none md:py-4 py-2 md:px-10 px-5 text-black md:text-lg text-sm leading-tight focus:border-transparent focus:ring-0 focus:shadow-outline placeholder-gray-400"
                                             placeholder="Search..."
                                         />
@@ -164,41 +193,78 @@ const Home = ({ menus }) => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="md:flex-1 md:pl-[80px] space-y-[50px]">
-                            <div className="Rice Bowl">
-                                <div className="mb-3 top-0">
-                                    <div className="uppercase text-[#222126] text-[14px] md:text-[32px] font-extrabold mb-7 md:mb-[18px]">RICE BOWL</div>
-                                </div>
-                                <div id="Chicken Rice Bowl" className="text-xl text-start font-bold mb-3 text-[#42754C]">
-                                    Chicken Rice Bowl
-                                </div>
-                    
-                                {/* <div className="grid gap-5 md:gap-6 grid-cols-1 md:grid-cols-3"> */}
-                                <div className="flex flex-wrap gap-5">
-                                    {menus
-                                        .filter(
-                                            (menu) =>
-                                                menu.category ===
-                                                "Chicken Rice Bowl"
-                                        )
-                                        .map((menu) => (
-                                            <Card
-                                                id={menu.id}
-                                                name={menu.name}
-                                                price={menu.price}
-                                                desc={menu.description}
-                                                img = {menu.image}
-                                                addSelectedItems={
-                                                    addSelectedItems
-                                                }
-                                                minusSelectedItems={
-                                                    minusSelectedItems
-                                                }
-                                                quantity={
-                                                    selectedItems[menu.id] || 0
-                                                }
-                                            />
+                       
+                        {search != '' ? (
+                            searchResults.length > 0 ? (
+                                <div className="md:flex-1 md:pl-[80px] space-y-[50px]">
+                                    <div className="flex flex-wrap gap-5">
+                                        {searchResults.map((result, index) => (
+                                            menus.filter((menu) => menu.name == result.itemName).map((menu) => (
+                                                <Card
+                                                    id={menu.id}
+                                                    name={menu.name}
+                                                    price={menu.price}
+                                                    desc={menu.description}
+                                                    img = {menu.image}
+                                                    addSelectedItems={
+                                                        addSelectedItems
+                                                    }
+                                                    minusSelectedItems={
+                                                        minusSelectedItems
+                                                    }
+                                                    quantity={
+                                                        selectedItems[menu.id] || 0
+                                                    }
+                                                />
+                                            ))
                                         ))}
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="md:flex-1 md:pl-[80px] space-y-[50px]">
+                                    <p>not found</p>
+                                </div>
+                        )): (
+                            <div className="md:flex-1 md:pl-[80px] space-y-[50px]">
+                                <div className="Rice Bowl">
+                                    {/* Chicken Rice Bowl */}
+                                    <div className="mb-3 top-0">
+                                        <div className="uppercase text-[#222126] text-[14px] md:text-[32px] font-extrabold mb-7 md:mb-[18px]">RICE BOWL</div>
+                                    </div>
+                                    <div id="Chicken Rice Bowl" className="text-xl text-start font-bold mb-3 text-[#42754C]">
+                                        Chicken Rice Bowl
+                                    </div>
+                        
+                                    {/* <div className="grid gap-5 md:gap-6 grid-cols-1 md:grid-cols-3"> */}
+                                    <div className="flex flex-wrap gap-5">
+                                        {menus
+                                            .filter(
+                                                (menu) =>
+                                                    menu.category ===
+                                                    "Chicken Rice Bowl"
+                                            )
+                                            .map((menu) => (
+                                                <div className="all_menu">
+                                                <Card
+                                                    id={menu.id}
+                                                    name={menu.name}
+                                                    price={menu.price}
+                                                    desc={menu.description}
+                                                    img = {menu.image}
+                                                    addSelectedItems={
+                                                        addSelectedItems
+                                                    }
+                                                    minusSelectedItems={
+                                                        minusSelectedItems
+                                                    }
+                                                    quantity={
+                                                        selectedItems[menu.id] || 0
+                                                    }
+                                                />
+                                                </div>
+                                            ))}
+                                           
+                                            
                                 </div>
                     
                     
@@ -216,6 +282,7 @@ const Home = ({ menus }) => {
                                                 "Fish Rice Bowl"
                                         )
                                         .map((menu) => (
+                                            <div className="all_menu">
                                             <Card
                                                 id={menu.id}
                                                 name={menu.name}
@@ -232,6 +299,7 @@ const Home = ({ menus }) => {
                                                     selectedItems[menu.id] || 0
                                                 }
                                             />
+                                            </div>
                                         ))}
                                 </div>
                     
@@ -249,6 +317,7 @@ const Home = ({ menus }) => {
                                                 "Shrimp Rice Bowl"
                                         )
                                         .map((menu) => (
+                                            <div className="all_menu">
                                             <Card
                                                 id={menu.id}
                                                 name={menu.name}
@@ -265,6 +334,7 @@ const Home = ({ menus }) => {
                                                     selectedItems[menu.id] || 0
                                                 }
                                             />
+                                            </div>
                                         ))}
                                 </div>
                     
@@ -282,6 +352,7 @@ const Home = ({ menus }) => {
                                                 "Beef Rice Bowl"
                                         )
                                         .map((menu) => (
+                                            <div className="all_menu">
                                             <Card
                                                 id={menu.id}
                                                 name={menu.name}
@@ -298,6 +369,7 @@ const Home = ({ menus }) => {
                                                     selectedItems[menu.id] || 0
                                                 }
                                             />
+                                            </div>
                                         ))}
                                 </div>
                             </div>
@@ -326,12 +398,13 @@ const Home = ({ menus }) => {
                                             (menu) => menu.category === "Drink"
                                         )
                                         .map((menu) => (
+                                            <div className="all_menu">
                                             <Card
+                                                id={menu.id}
+                                                name={menu.name}
                                                 price={menu.price}
                                                 desc={menu.description}
                                                 img = {menu.image}
-                                                id={menu.id}
-                                                name={menu.name}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -342,6 +415,7 @@ const Home = ({ menus }) => {
                                                     selectedItems[menu.id] || 0
                                                 }
                                             />
+                                            </div>
                                         ))}
                                 </div>
                             </div>
@@ -371,6 +445,7 @@ const Home = ({ menus }) => {
                                                 menu.category === "Mentai Rice"
                                         )
                                         .map((menu) => (
+                                            <div className="all_menu">
                                             <Card
                                                 id={menu.id}
                                                 name={menu.name}
@@ -387,6 +462,7 @@ const Home = ({ menus }) => {
                                                     selectedItems[menu.id] || 0
                                                 }
                                             />
+                                            </div>
                                         ))}
                                 </div>
                             </div>
@@ -416,12 +492,13 @@ const Home = ({ menus }) => {
                                                 menu.category === "Nusantara"
                                         )
                                         .map((menu) => (
+                                            <div className="all_menu">
                                             <Card
+                                                id={menu.id}
+                                                name={menu.name}
                                                 price={menu.price}
                                                 desc={menu.description}
                                                 img = {menu.image}
-                                                id={menu.id}
-                                                name={menu.name}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -432,6 +509,7 @@ const Home = ({ menus }) => {
                                                     selectedItems[menu.id] || 0
                                                 }
                                             />
+                                            </div>
                                         ))}
                                 </div>
                             </div>
@@ -446,12 +524,13 @@ const Home = ({ menus }) => {
                                             (menu) => menu.category === "Snack"
                                         )
                                         .map((menu) => (
+                                            <div className="all_menu">
                                             <Card
+                                                id={menu.id}
+                                                name={menu.name}
                                                 price={menu.price}
                                                 desc={menu.description}
                                                 img = {menu.image}
-                                                id={menu.id}
-                                                name={menu.name}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -462,10 +541,13 @@ const Home = ({ menus }) => {
                                                     selectedItems[menu.id] || 0
                                                 }
                                             />
+                                            </div>
                                         ))}
                                 </div>
                             </div>
                         </div>
+                        ) }
+                        
                     </div>
                 </div>
                 <button
