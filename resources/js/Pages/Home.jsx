@@ -41,13 +41,13 @@ const Home = ({ menus }) => {
     return (
         <>
         <div className="absolute"></div>
-        <div class="pattern-wavy pattern-yellow-500 pattern-bg-white 
-  pattern-size-32 pattern-opacity-10"></div>
+        <div class="pattern-wavy pattern-yellow-500 pattern-bg-white pattern-size-32 pattern-opacity-10"></div>
             <div className="absolute right-0 overflow-hidden md:px-12 z-[-1]">
                 <div className="bg-yellow-500 md:p-72 rounded-bl-[100px] md:-skew-x-[11deg] lg:translate-x-20 md:translate-x-52 lg:scale-x-110 md:block hidden"></div>
             </div>
+            
             <Navbar />
-            <div className="absolute w-full h-screen z-[-1] left-0 top-0 bg-yellow-500"></div>
+            <div className="absolute w-full h-screen z-[-1] left-0 top-0 bg-[#FBD605]"></div>
             <div className="absolute w-full h-screen z-[-1] left-0 top-0 curves"></div>
             <div>
                 <ul class='circles'>
@@ -73,7 +73,7 @@ const Home = ({ menus }) => {
                                     Warmth Blend
                                 </span>
                             </div>
-                            <div className="md:text-base text-sm md:mt-10 mt-5 text-left text-zinc-600 leading-loose">
+                            <div className="md:text-base text-sm md:mt-10 mt-5 text-left text-black leading-loose">
                                 Kami berkomitmen untuk terus menyajikan hidangan
                                 yang berkualitas, menciptakan suasana nyaman.
                                 Nasi cia akan menjadi lebih dari sekedar tempat
@@ -91,15 +91,15 @@ const Home = ({ menus }) => {
                                         />
                                     </span>
                                     <span>My Location</span>
-                                    <span className="text-slate-200">|</span>
+                                    <span className="text-black">|</span>
                                     <span>
-                                        New York,{" "}
-                                        <span className="text-[#1BCF92]">
-                                            Left Side Blue Door
+                                        Banten,{" "}
+                                        <span className="text-[#42754C] underline underline-offset-8">
+                                            Tangerang - Gading Serpong
                                         </span>
                                     </span>
                                 </div>
-                                <div className="bg-white border border-slate-200 items-center justify-between w-full flex md:p-2 md:mb-10 mb-5 sticky top-5 rounded-tr-[50px] rounded-br-[20px] rounded-bl-[50px] rounded-tl-[20px]">
+                                <div className="bg-white border border-slate-200 shadow-lg tems-center justify-between w-full flex md:p-2 md:mb-10 mb-5 sticky top-5 rounded-tr-[50px] rounded-br-[20px] rounded-bl-[50px] rounded-tl-[20px]">
                                     <form className="flex justify-between w-full" action="">
                                         <input
                                             type="text"
@@ -114,7 +114,7 @@ const Home = ({ menus }) => {
                             </div>
                         </div>
                         <div className="w-full">
-                            <div className="font-semibold text-[#BDBDBD] md:text-base text-sm">
+                            <div className="font-semibold text-black md:text-base text-sm">
                                 <span>Popular Category</span>
                             </div>
                             <div className="flex flex-start md:justify-evenly gap-3 mt-4 w-full overflow-x-auto overflow-y-hidden">
@@ -156,7 +156,7 @@ const Home = ({ menus }) => {
                                     ))
                                 ).map(menu => (
                                     <li className="mr-4 md:mr-0 text-right">
-                                        <a href={`#${menu.category}`} className="text-[14px] md:text-[20px] font-semibold hover:text-[#42754C] cursor-pointer text-extrabold">
+                                        <a href={`#${menu.category}`} className="text-[14px] md:text-[20px] font-bold hover:text-[#42754C] cursor-pointer text-extrabold">
                                             <span>{menu.category}</span>
                                         </a>
                                     </li>
