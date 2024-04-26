@@ -37,7 +37,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Chicken Salted Egg',
             'description' => 'Chicken dish with a rich salted egg flavor',
-            'image' => '/images/menus/',
+            'image' => '/images/logo.png',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
@@ -93,7 +93,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Ayam Geprek',
             'description' => 'Crispy chicken topped with spicy sambal sauce',
-            'image' => '/images/logo.pngayam_geprek.jpg',
+            'image' => '/images/menus/ayam_geprek.jpg',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
@@ -107,7 +107,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Ayam Cabe Ijo',
             'description' => 'Delicious chicken dish with green chili sauce',
-            'image' => '/images/logo.pngcabe_ijo.jpg',
+            'image' => '/images/menus/cabe_ijo.jpg',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
@@ -278,7 +278,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Dalgona Milk',
             'description' => 'Creamy milk topped with sweet whipped coffee foam',
-            'image' => '/images/logo.pngkopi.jpg',
+            'image' => '/images/menus/kopi.jpg',
             'category' => 'Drink',
             'price' => 15000,
         ]);
@@ -286,7 +286,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Strawberry Milk',
             'description' => 'Refreshing milk with sweet strawberry flavor',
-            'image' => '/images/logo.pngstrawberrymilk.jpg',
+            'image' => '/images/menus/strawberrymilk.jpg',
             'category' => 'Drink',
             'price' => 15000,
         ]);
@@ -302,7 +302,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Chicken Katsu Mentai',
             'description' => 'Crispy chicken katsu served with savory mentaiko sauce over rice',
-            'image' => '/images/logo.pngmentaichicken.png',
+            'image' => '/images/menus/mentaichicken.png',
             'category' => 'Mentai Rice',
             'price' => 30000,
         ]);
@@ -367,7 +367,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Ayam Bakar',
             'description' => 'Juicy grilled chicken marinated in Indonesian spices',
-            'image' => '/images/logo.pngnusanbakar.png',
+            'image' => '/images/menus/nusanbakar.png',
             'category' => 'Nusantara',
             'price' => 30000,
         ]);
