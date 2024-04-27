@@ -14,7 +14,7 @@ class MenuSeeder extends Seeder
     public function run(): void
     {
         Menu::create([
-            'name' => 'Koren Spicy Chicken',
+            'name' => 'Korean Spicy Chicken',
             'description' => 'Spicy chicken seasoned with Korean-inspired spices',
             'image' => '/images/menus/koreanspicy.png',
             'category' => 'Chicken Rice Bowl',
@@ -30,35 +30,35 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Chicken Mushroom Sauce',
             'description' => 'Chicken cooked in a savory mushroom sauce',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/chicken_mushsauce.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Chicken Salted Egg',
             'description' => 'Chicken dish with a rich salted egg flavor',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/chicken_saltegg.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Karage Egg Mayo',
             'description' => 'Crispy chicken topped with creamy mayo',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/chicken_eggmayo.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Chicken Katsu Teriyaki',
             'description' => 'Juicy chicken served with sweet teriyaki sauce',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/chicken_katsuteri.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Chicken Katsu Teriyaki Egg Mayo',
             'description' => 'Crunchy chicken with savory teriyaki and mayo',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/chicken_katsuterimayo.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
@@ -79,14 +79,14 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Ayam Saos Mentega',
             'description' => 'Succulent chicken served with creamy butter sauce',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/ayam_saosmentega.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Ayam Cabe Garam',
             'description' => 'Spicy chicken seasoned with aromatic chili spices',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/ayam_cabegaram.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
@@ -100,7 +100,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Ayam Sambal Matah',
             'description' => 'Juicy chicken served with tangy matah sambal',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/ayam_sambalmatah.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
@@ -188,7 +188,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Korean Spicy Shrimp',
             'description' => 'Delicious Korean-style spicy shrimp rice bowl',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/shrimp_spicykorean.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
         ]);
@@ -196,7 +196,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Honey Garlic Shrimp',
             'description' => 'Tasty honey garlic glazed shrimp rice bowl',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/shrimp_honeygarlic.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
         ]);
@@ -212,7 +212,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Shrimp Salted Egg',
             'description' => 'Flavorful shrimp with salted egg sauce on a bed of rice',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/shrimp_salted.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
         ]);
@@ -220,7 +220,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Udang Saus Mentega',
             'description' => 'Buttery shrimp served with special sauce',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/shrim_saosmen.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
         ]);
@@ -228,7 +228,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Udang Cabe Garam',
             'description' => 'Spicy and savory shrimp with salted chili',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/shrimp_cabegaram.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
         ]);
@@ -236,7 +236,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Udang Geprek',
             'description' => 'Crispy shrimp served with spicy sauce and crushed fried garlic',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/shrimp_geprek.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
         ]);
@@ -244,7 +244,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Udang Sambel Matah',
             'description' => 'Fresh shrimp served with Balinese raw chili sauce',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/shrimp_matah.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
         ]);
@@ -252,7 +252,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Udang Cabe Ijo',
             'description' => 'Spicy shrimp with green chili sauce',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/shrimp_cabeijo.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
         ]);
@@ -261,7 +261,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Beef Blackpepper',
             'description' => 'Tender beef slices cooked in flavorful black pepper sauce',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/beef_black.webp',
             'category' => 'Beef Rice Bowl',
             'price' => 38000,
         ]);
@@ -269,7 +269,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Beef Yakiniku',
             'description' => 'Juicy beef slices marinated in savory yakiniku sauce',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/beef_yakiniku.webp',
             'category' => 'Beef Rice Bowl',
             'price' => 38000,
         ]);
@@ -290,11 +290,12 @@ class MenuSeeder extends Seeder
             'category' => 'Drink',
             'price' => 15000,
         ]);
+
         //Mentai Rice
         Menu::create([
             'name' => 'Kani Mentai',
             'description' => 'Delicious rice bowl topped with crab stick and mentaiko sauce',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 25000,
         ]);
@@ -308,9 +309,9 @@ class MenuSeeder extends Seeder
         ]);
         
         Menu::create([
-            'name' => 'Chicken KatsuKkani Mentai Rice',
+            'name' => 'Chicken Katsu Kani Mentai Rice',
             'description' => 'Crispy chicken katsu and crab stick served with mentaiko sauce over rice',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 35000,
         ]);
@@ -318,7 +319,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Ebi Katsu Mentai',
             'description' => 'Crispy ebi katsu topped with flavorful mentaiko sauce over rice',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 35000,
         ]);
@@ -326,7 +327,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Ebi Katsu Kani Mentai',
             'description' => 'Crispy ebi katsu and crab stick served with creamy mentaiko sauce over rice',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 40000,
         ]);
@@ -334,7 +335,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Salmon Mentai',
             'description' => 'Fresh salmon slices drizzled with delicious mentaiko sauce over rice',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 40000,
         ]);
@@ -342,7 +343,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Salmon Kani Mentai',
             'description' => 'Fresh salmon slices and crab stick served with creamy mentaiko sauce over rice',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 45000,
         ]);
@@ -350,7 +351,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Tuna Mentai',
             'description' => 'Tender tuna slices topped with flavorful mentaiko sauce over rice',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 35000,
         ]);
@@ -358,7 +359,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Tuna Kani Mentai',
             'description' => 'Tender tuna slices and crab stick served with creamy mentaiko sauce over rice',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 40000,
         ]);
@@ -375,7 +376,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Ayam Kalasan',
             'description' => 'Tender chicken cooked in traditional Kalasan style',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/ayam_kalasan.webp',
             'category' => 'Nusantara',
             'price' => 30000,
         ]);
@@ -383,7 +384,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Nila Goreng',
             'description' => 'Crispy fried tilapia fish served with sambal matah',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/nila_goreng.webp',
             'category' => 'Nusantara',
             'price' => 30000,
         ]);
@@ -407,7 +408,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Crispy Tempong',
             'description' => 'Crispy fried chicken with a spicy and tangy tempong sauce',
-            'image' => '/images/logo.png',
+            'image' => '/images/menus/cripsy_tempong.webp',
             'category' => 'Nusantara',
             'price' => 30000,
         ]);
@@ -416,7 +417,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Pangsit Ayam',
             'description' => 'Crispy chicken dumplings served with dipping sauce',
-            'image' => '/images/menus/snackall.png',
+            'image' => '/images/menus/pangsit_ayam.webp',
             'category' => 'Snack',
             'price' => 25000,
         ]);
@@ -424,7 +425,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Pangsit Udang',
             'description' => 'Delicious shrimp dumplings served with dipping sauce',
-            'image' => '/images/menus/snackall.png',
+            'image' => '/images/menus/pangsit_ayam.webp',
             'category' => 'Snack',
             'price' => 30000,
         ]);
@@ -432,7 +433,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'French Fries',
             'description' => 'Crispy and golden fries served with ketchup or mayonnaise',
-            'image' => '/images/menus/snackall.png',
+            'image' => '/images/menus/french_fries.webp',
             'category' => 'Snack',
             'price' => 18000,
         ]);
@@ -440,7 +441,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Siumay Dimsum',
             'description' => 'Steamed dimsum filled with savory chicken and shrimp',
-            'image' => '/images/menus/snackall.png',
+            'image' => '/images/logo.png',
             'category' => 'Snack',
             'price' => 35000,
         ]);
@@ -448,7 +449,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Siumay Mentai',
             'description' => 'Steamed dimsum filled with chicken and shrimp topped with mentaiko sauce',
-            'image' => '/images/menus/snackall.png',
+            'image' => '/images/logo.png',
             'category' => 'Snack',
             'price' => 35000,
         ]);
@@ -456,7 +457,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Cakwe Ayam',
             'description' => 'Crispy fried dough sticks served with chicken floss',
-            'image' => '/images/menus/snackall.png',
+            'image' => '/images/logo.png',
             'category' => 'Snack',
             'price' => 30000,
         ]);
@@ -464,7 +465,7 @@ class MenuSeeder extends Seeder
         Menu::create([
             'name' => 'Cakwe Udang',
             'description' => 'Crispy fried dough sticks served with shrimp floss',
-            'image' => '/images/menus/snackall.png',
+            'image' => '/images/logo.png',
             'category' => 'Snack',
             'price' => 35000,
         ]);
