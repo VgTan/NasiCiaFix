@@ -77,7 +77,7 @@ const Home = ({ menus }) => {
             
             <Navbar />
             <div className="absolute w-full h-screen z-[-1] left-0 top-0 bg-[#FBD605]"></div>
-            <div className="absolute w-full h-screen z-[-1] left-0 top-0 curves"></div>
+            <div className="absolute w-full h-screen z-[-1] left-0 top-0 curves overflow-x-hidden md:overflow-x-visible"></div>
             <div>
                 <ul class='circles'>
                     <li></li>
@@ -149,22 +149,27 @@ const Home = ({ menus }) => {
                             <div className="flex flex-start md:justify-evenly gap-3 mt-4 w-full overflow-x-auto overflow-y-hidden">
                                 <CategoryCard
                                     img="/images/cat/bowl.png"
+                                    href="RiceBowl"
                                     name="Rice Bowl"
                                 />
                                 <CategoryCard
                                     img="/images/cat/drink.png"
+                                    href="Drink"
                                     name="Drink"
                                 />
                                 <CategoryCard
                                     img="/images/cat/mentai.png"
+                                    href="Mentai"
                                     name="Mentai"
                                 />
                                 <CategoryCard
                                     img="/images/cat/nusan.png"
+                                    href="Nusantara"
                                     name="Nusantara"
                                 />
                                 <CategoryCard
                                     img="/images/cat/snack.png"
+                                    href="Snack"
                                     name="Snack"
                                 />
                             </div>
@@ -226,7 +231,7 @@ const Home = ({ menus }) => {
                                 </div>
                         )): (
                             <div className="md:flex-1 md:pl-[80px] space-y-[50px]">
-                                <div className="Rice Bowl">
+                                <div id="RiceBowl" className="Rice Bowl">
                                     {/* Chicken Rice Bowl */}
                                     <div className="mb-3 top-0">
                                         <div className="uppercase text-[#222126] text-[14px] md:text-[32px] font-extrabold mb-7 md:mb-[18px]">RICE BOWL</div>
@@ -436,7 +441,7 @@ const Home = ({ menus }) => {
                             {/* MENTAI RICE */}
                             <div className="MENTAI RICE mt-10">
                                 <div className="mb-5 sticky top-0">
-                                    <div id="Mentai Rice" className="text-4xl">MENTAI RICE</div>
+                                    <div id="Mentai" className="text-4xl">MENTAI RICE</div>
                                 </div>
                                 <div className="flex flex-wrap gap-5 justify-start">
                                     {menus

@@ -5,6 +5,7 @@ import { MdPersonOutline } from "react-icons/md";
 import React, { useState, useEffect } from "react";
 
 export default function Navbar() {
+    const [select, setValue] = useState('');
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -22,6 +23,17 @@ export default function Navbar() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+    const handleChange = (e) => {
+        e.preventDefault();
+        setValue(e.target.value);
+        if(e.target.value === 'main') {
+            window.location.href = "/#RiceBowl";
+        } else if(e.target.value === 'side') {
+            window.location.href = "/#Snack";
+        }else if(e.target.value === 'drink') {
+            window.location.href = "/#Drink";
+        }
+    }
     return (
         <>
              <div className={`fixed z-[999] flex justify-between w-full h-20 items-center py-4 font-nunito sm:px-10 px-7 ${scrolled ? 'bg-white bg-opacity-85' : ''} transition duration-700`}>
@@ -34,7 +46,7 @@ export default function Navbar() {
                     <div className="md:hidden lg:flex justify-center sm:gap-2 hidden">
                         <MdOutlineSort size="1.5em" className=" "/>
                         <form action="">
-                            <select name="Category" id="" className="appearance-none border-none p-0 pr-7 font-extrabold bg-transparent">
+                            <select name="Category" id="" onChange={handleChange} className="appearance-none border-none p-0 pr-7 font-extrabold bg-transparent">
                                 <option value="">Categories</option>
                                 <option value="main">Main Dishes</option>
                                 <option value="side">Side Dishes</option>
