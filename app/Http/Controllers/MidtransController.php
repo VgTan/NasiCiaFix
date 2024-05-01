@@ -49,8 +49,8 @@ class MidtransController extends Controller
                 // dd($order);
                 $order->update(['status' => 'Paid']);
                 $order->update(['progress' => 'Preparing']);
+                return redirect('/history');
             }
         }
-        return redirect()->route("history");
     }
 }
