@@ -77,7 +77,7 @@ const Home = ({ menus }) => {
             
             <Navbar />
             <div className="absolute w-full h-screen z-[-1] left-0 top-0 bg-[#FBD605]"></div>
-            <div className="absolute w-full h-screen z-[-1] left-0 top-0 curves overflow-x-hidden md:overflow-x-visible"></div>
+            <div className="absolute w-full h-screen z-[-1] left-0 top-0 curves overflow-x-hidden"></div>
             <div>
                 <ul class='circles'>
                     <li></li>
