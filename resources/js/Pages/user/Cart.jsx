@@ -48,7 +48,7 @@ const Cart = ({ menus }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        router.post("/checkout", {total_price, name, qty, table_num})
+        router.post("/checkout", {total_price_tax, name, qty, table_num})
     }
     return (
         <>
@@ -77,7 +77,7 @@ const Cart = ({ menus }) => {
                                             <h3>
                                                 <input className="border-0 md:text-lg text-md" type="text" value={menus.find(menu => menu.id == id).name} name="name" disabled />
                                             </h3>
-                                            <input className="-mt-3 border-0 md:text-right md:text-lg text-[#42754C]" type="text" value={`Rp. ${menus.find(menu => menu.id == id).price * quantity}`} name="price" disabled />
+                                            <input className="-mt-3 border-0 md:text-right md:text-lg text-[#42754C]" type="text" value={`${(menus.find(menu => menu.id == id).price * quantity).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}`} name="price" disabled />
                                         </div>
                                     </div>
                                     <p className='hidden md:block md:text-sm md:ml-5 md:mb-2 md:font-thin'> Quantity </p>
@@ -102,17 +102,17 @@ const Cart = ({ menus }) => {
                     <div className="flex flex-col mt-8 mb-4">
                         <div className="flex justify-between mb-4">
                             <p className="">Total Price:</p>
-                            <p className="">Rp {total_price}</p>
+                            <p className="">{total_price.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}</p>
                         </div>
                         <div className="flex justify-between">
                             <p className="">Tax:</p>
-                                <p className="">Rp {total_price * 0.1}</p>
+                                <p className="">{(total_price * 0.1).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}</p>
                         </div>
                     </div>
                     <div className="border-t border-gray-300 h-6"></div>
                     <div className="flex justify-between mb-10 font-semibold">
                         <p className="">Total Price include Tax:</p>
-                        <p className="">Rp {total_price_tax}</p>
+                        <p className="">{total_price_tax.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}</p>
                     </div>
                     <div className="flex justify-between mb-10 font-semibold items-center">
                         <p className="">Table Number:</p>

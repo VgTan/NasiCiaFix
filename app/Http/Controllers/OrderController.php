@@ -26,7 +26,7 @@ class OrderController extends Controller
         $user = Auth()->user();
         // dd($user);
         $validate = $request->validate([
-            'total_price' => 'required',
+            'total_price_tax' => 'required',
             'name' => 'required',
             'qty' => 'required',
             'table_num' => 'required'
@@ -34,7 +34,7 @@ class OrderController extends Controller
         $order = new Order;
         $order->user_id = $user->id;
         $order->user_name = $user->name;
-        $order->total_price = $request->total_price;
+        $order->total_price = $request->total_price_tax;
         $order->table_number = $request->table_num;
         $order->save();
         $order->order_id = "ORDER #".$order->id;

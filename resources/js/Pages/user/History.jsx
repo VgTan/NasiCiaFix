@@ -46,7 +46,7 @@ const History = ({ user, order, od }) => {
                                 <p className="text-sm md:text-md text-gray-700 font-thin col-span-1">Order Date</p>
                             </div>
                             <div className="grid grid-cols-3">
-                                <p className="text-sm md:text-lg font-semibold">Rp. {orderItem.total_price}</p>
+                                <p className="text-sm md:text-lg font-semibold">{(orderItem.total_price).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}</p>
                                 <p className={`text-sm md:text-lg font-semibold ${orderItem.status === 'Unpaid' ? 'text-red-500' : 'text-green-500'}`}>{orderItem.status}</p>
                                 <p className="text-sm md:text-lg font-semibold">23 March 2023</p>
                             </div>
