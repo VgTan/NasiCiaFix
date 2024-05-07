@@ -19,6 +19,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/koreanspicy.png',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         Menu::create([
             'name' => 'Honey Garlic Chicken',
@@ -26,6 +27,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/honey_garlic.jpg',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         Menu::create([
             'name' => 'Chicken Mushroom Sauce',
@@ -33,6 +35,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/chicken_mushsauce.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         Menu::create([
             'name' => 'Chicken Salted Egg',
@@ -40,6 +43,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/chicken_saltegg.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         Menu::create([
             'name' => 'Karage Egg Mayo',
@@ -47,6 +51,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/chicken_eggmayo.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         Menu::create([
             'name' => 'Chicken Katsu Teriyaki',
@@ -54,6 +59,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/chicken_katsuteri.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         Menu::create([
             'name' => 'Chicken Katsu Teriyaki Egg Mayo',
@@ -61,6 +67,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/chicken_katsuterimayo.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         Menu::create([
             'name' => 'Chicken Geprek Mozarella',
@@ -68,6 +75,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         Menu::create([
             'name' => 'Chicken Teriyaki',
@@ -75,6 +83,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         Menu::create([
             'name' => 'Ayam Saos Mentega',
@@ -82,6 +91,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/ayam_saosmentega.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         Menu::create([
             'name' => 'Ayam Cabe Garam',
@@ -89,6 +99,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/ayam_cabegaram.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         Menu::create([
             'name' => 'Ayam Geprek',
@@ -96,6 +107,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/ayam_geprek.jpg',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         Menu::create([
             'name' => 'Ayam Sambal Matah',
@@ -103,6 +115,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/ayam_sambalmatah.webp',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         Menu::create([
             'name' => 'Ayam Cabe Ijo',
@@ -110,6 +123,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/cabe_ijo.jpg',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
+            'stock' => 100,
         ]);
         //fish bowl
         Menu::create([
@@ -118,6 +132,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Fish Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -126,6 +141,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Fish Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -134,6 +150,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Fish Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -142,6 +159,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Fish Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -150,6 +168,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Fish Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -158,6 +177,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Fish Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -166,6 +186,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Fish Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -174,6 +195,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Fish Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -182,6 +204,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Fish Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         //Shrimp rice bowl
@@ -191,6 +214,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/shrimp_spicykorean.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -199,6 +223,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/shrimp_honeygarlic.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -207,6 +232,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -215,6 +241,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/shrimp_salted.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -223,6 +250,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/shrim_saosmen.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -231,6 +259,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/shrimp_cabegaram.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -239,6 +268,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/shrimp_geprek.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -247,6 +277,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/shrimp_matah.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -255,6 +286,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/shrimp_cabeijo.webp',
             'category' => 'Shrimp Rice Bowl',
             'price' => 32000,
+            'stock' => 100,
         ]);
         
         //beef rice bowl
@@ -264,6 +296,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/beef_black.webp',
             'category' => 'Beef Rice Bowl',
             'price' => 38000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -272,6 +305,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/beef_yakiniku.webp',
             'category' => 'Beef Rice Bowl',
             'price' => 38000,
+            'stock' => 100,
         ]);
         
         //Drink
@@ -281,6 +315,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/kopi.jpg',
             'category' => 'Drink',
             'price' => 15000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -289,6 +324,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/strawberrymilk.jpg',
             'category' => 'Drink',
             'price' => 15000,
+            'stock' => 100,
         ]);
 
         //Mentai Rice
@@ -298,6 +334,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 25000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -306,6 +343,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/mentaichicken.png',
             'category' => 'Mentai Rice',
             'price' => 30000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -314,6 +352,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 35000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -322,6 +361,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 35000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -330,6 +370,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 40000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -338,6 +379,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 40000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -346,6 +388,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 45000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -354,6 +397,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 35000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -362,6 +406,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/mentai_kani.webp',
             'category' => 'Mentai Rice',
             'price' => 40000,
+            'stock' => 100,
         ]);
 
         //nusantara
@@ -371,6 +416,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/nusanbakar.png',
             'category' => 'Nusantara',
             'price' => 30000,
+            'stock' => 100,
         ]);
 
         Menu::create([
@@ -379,6 +425,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/ayam_kalasan.webp',
             'category' => 'Nusantara',
             'price' => 30000,
+            'stock' => 100,
         ]);
 
         Menu::create([
@@ -387,6 +434,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/nila_goreng.webp',
             'category' => 'Nusantara',
             'price' => 30000,
+            'stock' => 100,
         ]);
 
         Menu::create([
@@ -395,6 +443,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/nusannilabak.png',
             'category' => 'Nusantara',
             'price' => 30000,
+            'stock' => 100,
         ]);
 
         Menu::create([
@@ -403,6 +452,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/nusanmatah.png',
             'category' => 'Nusantara',
             'price' => 30000,
+            'stock' => 100,
         ]);
 
         Menu::create([
@@ -411,6 +461,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/cripsy_tempong.webp',
             'category' => 'Nusantara',
             'price' => 30000,
+            'stock' => 100,
         ]);
 
         //Snack
@@ -420,6 +471,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/pangsit_ayam.webp',
             'category' => 'Snack',
             'price' => 25000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -428,6 +480,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/pangsit_ayam.webp',
             'category' => 'Snack',
             'price' => 30000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -436,6 +489,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/french_fries.webp',
             'category' => 'Snack',
             'price' => 18000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -444,6 +498,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Snack',
             'price' => 35000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -452,6 +507,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Snack',
             'price' => 35000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -460,6 +516,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Snack',
             'price' => 30000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -468,6 +525,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/logo.png',
             'category' => 'Snack',
             'price' => 35000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -476,6 +534,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/snackall.png',
             'category' => 'Snack',
             'price' => 40000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -484,6 +543,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/snackall.png',
             'category' => 'Snack',
             'price' => 30000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -492,6 +552,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/snackall.png',
             'category' => 'Snack',
             'price' => 30000,
+            'stock' => 100,
         ]);
         
         Menu::create([
@@ -500,6 +561,7 @@ class MenuSeeder extends Seeder
             'image' => '/images/menus/snackall.png',
             'category' => 'Snack',
             'price' => 30000,
+            'stock' => 100,
         ]);        
     }
 }

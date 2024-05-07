@@ -2,17 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Midtrans;
+use Inertia\Inertia;
 class MidtransController extends Controller
 {
     public function pay(Request $request) {
         $user = Auth()->user();
         $order_id = $request->order_id;
         // dd($request->order_id);
-
         $order = Order::where('order_id', $order_id)->first();
+
+        $order_details = OrderDetail::where('order_id', $order->id)->get();
+        foreach($order_details as $detail) {
+            $menuDetail = Menu::where('name', $detail->menu_name)->first();
+            $stock = $menuDetail->stock - $detail->qty;
+            if($stock <= 0) {
+                return Inertia::render('Components/Fail', [
+                    'fail' => 'Not Enough Stock'
+                ]);
+            }
+        }
         // dd($order);
 
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
@@ -49,6 +62,14 @@ class MidtransController extends Controller
                 // dd($order);
                 $order->update(['status' => 'Paid']);
                 $order->update(['progress' => 'Preparing']);
+
+                $order_details = OrderDetail::where('order_id', $order->id)->get();
+                // dd($order_details);
+                foreach($order_details as $detail) {
+                    $menuDetail = Menu::where('name', $detail->menu_name)->first();
+                    $stock = $menuDetail->stock - $detail->qty;
+                    $menuDetail->update(['stock' => $stock]);
+                }
                 return redirect('/history');
             }
         }

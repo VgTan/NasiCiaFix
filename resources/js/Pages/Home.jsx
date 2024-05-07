@@ -211,6 +211,7 @@ const Home = ({ menus }) => {
                                                     price={menu.price}
                                                     desc={menu.description}
                                                     img = {menu.image}
+                                                    stock = {menu.stock}
                                                     addSelectedItems={
                                                         addSelectedItems
                                                     }
@@ -256,6 +257,7 @@ const Home = ({ menus }) => {
                                                     price={menu.price}
                                                     desc={menu.description}
                                                     img = {menu.image}
+                                                    stock = {menu.stock}
                                                     addSelectedItems={
                                                         addSelectedItems
                                                     }
@@ -294,6 +296,7 @@ const Home = ({ menus }) => {
                                                 price={menu.price}
                                                 desc={menu.description}
                                                 img = {menu.image}
+                                                stock = {menu.stock}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -329,6 +332,7 @@ const Home = ({ menus }) => {
                                                 price={menu.price}
                                                 desc={menu.description}
                                                 img = {menu.image}
+                                                stock = {menu.stock}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -364,6 +368,7 @@ const Home = ({ menus }) => {
                                                 price={menu.price}
                                                 desc={menu.description}
                                                 img = {menu.image}
+                                                stock = {menu.stock}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -410,6 +415,7 @@ const Home = ({ menus }) => {
                                                 price={menu.price}
                                                 desc={menu.description}
                                                 img = {menu.image}
+                                                stock = {menu.stock}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -457,6 +463,7 @@ const Home = ({ menus }) => {
                                                 price={menu.price}
                                                 desc={menu.description}
                                                 img = {menu.image}
+                                                stock = {menu.stock}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -504,6 +511,7 @@ const Home = ({ menus }) => {
                                                 price={menu.price}
                                                 desc={menu.description}
                                                 img = {menu.image}
+                                                stock = {menu.stock}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -536,6 +544,7 @@ const Home = ({ menus }) => {
                                                 price={menu.price}
                                                 desc={menu.description}
                                                 img = {menu.image}
+                                                stock = {menu.stock}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }

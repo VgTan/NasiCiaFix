@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\User;
@@ -59,5 +60,21 @@ class AdminController extends Controller
             // dd($order);
             $order->update(['progress' => $request->update_prog]);
         };
+    }
+
+    public function menuStockIndex() {
+        $menus = Menu::all();
+
+        return Inertia::render('Admin/menuStock', [
+            'menus' => $menus
+        ]);
+    }
+
+    public function setStock(Request $request) {
+        $menu = Menu::where('name', $request->name)->first();
+        
+        // dd($menu);
+        $menu->update(['stock' => $request->stock]);
+        return back();
     }
 }

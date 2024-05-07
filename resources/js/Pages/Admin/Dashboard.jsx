@@ -1,6 +1,7 @@
 import { router } from "@inertiajs/react";
 import { useState } from "react";
 import { MdOutlineHistoryEdu } from "react-icons/md";
+import NavbarAdmin from "@/Components/NavbarAdmin";
 
 const Dashboard = ( {order, od} ) => {
     const [update_prog, setUpdateProg] = useState('');
@@ -15,9 +16,7 @@ const Dashboard = ( {order, od} ) => {
     }
     return (
         <>
-        <div className="flex justify-end p-10">
-            <a href="/logout" className="font-bold text-xl md:text-2xl mb-4 md:mb-8 ml-2 -mt-1 text-red-500">LOGOUT</a>
-        </div>
+        <NavbarAdmin></NavbarAdmin>
         <div className="font-nunito md:m-20 m-5 md:mt-0 mt-0">
             <div className="flex flex-wrap -mb-4 md:mb-0">
                 <MdOutlineHistoryEdu className="text-xl md:text-2xl font-bold"/>

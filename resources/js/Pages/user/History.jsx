@@ -3,10 +3,9 @@ import { router } from "@inertiajs/react";
 import { useState } from "react";
 import { MdOutlineHistoryEdu } from "react-icons/md";
 
-const History = ({ user, order, od }) => {
+const History = ({ user, order, od, fail}) => {
     const [order_id, setOrderId] = useState('');
     const [total_price, setTotalPrice] = useState('');
-    
     const handlePick = (index, total) => {
         setOrderId(index);
         setTotalPrice(total);
@@ -30,6 +29,9 @@ const History = ({ user, order, od }) => {
                 <div className="flex flex-wrap -mb-4 md:mb-0">
                     <MdOutlineHistoryEdu className="text-xl md:text-2xl font-bold"/>
                     <h1 className="font-bold text-xl md:text-2xl mb-4 md:mb-8 ml-2 -mt-1">YOUR ORDER HISTORY</h1>
+                </div>
+                <div className="flex justify-center -mb-4 md:mb-0">
+                    {fail && <div className="font-bold text-xl md:text-2xl mb-4 md:mb-8 ml-2 -mt-1 text-red-500 opacity-75">Not Enough Stock</div>}
                 </div>
                 {order.map((orderItem, key) => (
                     <form key={key} id={key} className="bg-white shadow-xl rounded-md p-4 md:p-8 mb-6" onSubmit={handleSubmit}>

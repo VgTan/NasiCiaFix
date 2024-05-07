@@ -7,18 +7,18 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+
 class OrderController extends Controller
 {
     public function history() {
         $user = Auth()->user();
         $order = Order::where('user_id', $user->id)->get();
         $od = OrderDetail::all();
-
         // dd($od);
         return Inertia::render('user/History', [
             'user' => $user,
             'order' => $order,
-            'od' => $od
+            'od' => $od,
         ]);
     }
     public function order(Request $request) {
@@ -57,7 +57,9 @@ class OrderController extends Controller
         // Set your Merchant Server Key
         $order_id = $order->order_id;
         $total_price = $order->total_price;
-
+        
+        
+        
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
@@ -77,6 +79,7 @@ class OrderController extends Controller
                 // 'email' => $user->email,
             ),
         );
+        
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         // dd($snapToken);

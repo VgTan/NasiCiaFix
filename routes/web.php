@@ -47,6 +47,8 @@ Route::controller(AdminController::class)->group(function() {
     Route::get('/dashboard', 'dash')->name('dashboard')->middleware(isAdmin::class);
     Route::post('/admin-handle', 'handle')->middleware(isAdmin::class);
 
+    Route::get('/menu-stock', 'menuStockIndex')->middleware(isAdmin::class);;
+    Route::post('/set-stock', 'setStock')->middleware(isAdmin::class);
 });
 
 
