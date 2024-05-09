@@ -61,6 +61,7 @@ const Cart = ({ menus }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        localStorage.setItem('selectedItems', JSON.stringify({}));
         router.post("/checkout", { total_price_tax, name, qty, proof });
     };
 

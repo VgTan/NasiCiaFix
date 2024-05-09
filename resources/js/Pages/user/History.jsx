@@ -37,7 +37,7 @@ const History = ({ user, order, od, fail}) => {
                     <form key={key} id={key} className="bg-white shadow-xl rounded-md p-4 md:p-8 mb-6" onSubmit={handleSubmit}>
                         
                         <div className="grid mb-4 w-full">
-                            <p className="text-base md:text-xl font-bold">Order #{orderItem.id} | Table Number: {orderItem.table_number}</p>
+                            <p className="text-base md:text-xl font-bold">Order #{orderItem.id} | Order Number: {orderItem.order_number}</p>
                             <p className={`text-base md:text-xl font-bold ${orderItem.progress == 'Waiting' ? 'text-orange-500' : orderItem.progress == 'Preparing' ? 'text-black' : 'text-green-500'}`}>{orderItem.progress}</p>
                         </div>
 
@@ -57,11 +57,12 @@ const History = ({ user, order, od, fail}) => {
                         <div className="mb-4">
                             <div className="grid grid-cols-1">
                                 <p className="text-sm md:text-md text-gray-700 font-thin">Item Ordered: 
-                                {od.filter(details => details.order_id == orderItem.id).length}</p>
+                                {/* {od.filter(details => details.order_id == orderItem.id).qty} */}
+                                </p>
                             </div>
                             <div className="grid grid-cols-1">
                             {od.filter(details => details.order_id == orderItem.id).map((details, key) => (
-                                <p key={key} className="text-sm md:text-lg font-semibold">{details.menu_name}</p>
+                                <p key={key} className="text-sm md:text-lg font-semibold">{details.qty}x {details.menu_name}</p>
                             ))}
                             </div>
                         </div>
