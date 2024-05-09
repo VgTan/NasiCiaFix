@@ -56,7 +56,7 @@ class AdminController extends Controller
         ]);
         if($val) {
             // dd($request->all());
-            $order = Order::where('order_id', '=', $request->id)->first();
+            $order = Order::where('id', '=', $request->id)->first();
             // dd($order);
             $order->update(['progress' => $request->update_prog]);
         };

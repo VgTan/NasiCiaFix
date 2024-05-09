@@ -38,7 +38,7 @@ const History = ({ user, order, od, fail}) => {
                         
                         <div className="grid mb-4 w-full">
                             <p className="text-base md:text-xl font-bold">Order #{orderItem.id} | Order Number: {orderItem.order_number}</p>
-                            <p className={`text-base md:text-xl font-bold ${orderItem.progress == 'Waiting' ? 'text-orange-500' : orderItem.progress == 'Preparing' ? 'text-black' : 'text-green-500'}`}>{orderItem.progress}</p>
+                            <p className={`text-base md:text-xl font-bold ${orderItem.progress == 'Waiting' ? 'text-orange-500' : orderItem.progress == 'Preparing' ? 'text-orange-600' : orderItem.progress == 'Ready' ? 'text-yellow-500' : 'text-green-500'}`}>{orderItem.progress}</p>
                         </div>
 
                         <div className="mb-4">
