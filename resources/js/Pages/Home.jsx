@@ -53,14 +53,16 @@ const Home = ({ menus }) => {
         });
         const updatedResults = filteredResults.map(item => {
             const txtValue = item.textContent || item.innerText;
-            const separatorIndex = txtValue.toUpperCase().indexOf("RP");
-            const itemName = txtValue.substring(0, separatorIndex).trim();
+            const separatorIndex = txtValue.indexOf(":");
+            const rpIndex = txtValue.indexOf("Rp");
+            const itemName = txtValue.substring(separatorIndex + 1, rpIndex).replace(/\d+/g, '').trim();
             return {
                 itemName: itemName,
                 element: item
             };
         });
         setSearchResults(updatedResults);
+        console.log(searchResults)
     }, [search, originalItems]);
 
     const handleAddToCart = () => {
@@ -77,7 +79,7 @@ const Home = ({ menus }) => {
             
             <Navbar />
             <div className="absolute w-full h-screen z-[-1] left-0 top-0 bg-[#FBD605]"></div>
-            <div className="absolute w-full h-screen z-[-1] left-0 top-0 curves overflow-x-hidden"></div>
+            <div className="absolute w-full h-screen z-[-1] left-0 top-0 curves overflow-hidden"></div>
             <div>
                 <ul class='circles'>
                     <li></li>

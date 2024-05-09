@@ -35,7 +35,7 @@ Route::controller(OrderController::class)->group(function() {
 });
 
 Route::controller(MidtransController::class)->group(function() {
-    Route::post('/payment', 'pay')->name("payment")->middleware(LoggedIn::class);
+    // Route::post('/payment', 'pay')->name("payment")->middleware(LoggedIn::class);
 });
 
 
