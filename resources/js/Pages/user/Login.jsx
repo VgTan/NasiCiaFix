@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { router } from '@inertiajs/react';
+import Navbar from '@/Components/Navbar';
 
 function Login({ user, accessToken }) {
   const [email, setEmail] = useState('');
@@ -27,6 +28,7 @@ function Login({ user, accessToken }) {
 
   return (
     <div>
+      <Navbar/>
       <div className="md:absolute md:overflow-hidden md:px-12 z-[-1] md:-left-20 md:-top-32 font-nunito">
         <div className="bg-yellow-500 md:p-72 rounded-br-[100px] md:-skew-y-[11deg] md:translate-y-20 md:scale-150 xl:block md:hidden"></div>
       </div>
