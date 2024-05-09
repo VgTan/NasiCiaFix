@@ -26,7 +26,7 @@ const Dashboard = ( {order, od} ) => {
                 <form onSubmit={handleSubmit} key={key} className="bg-white border border-zinc-200 shadow-xl rounded-md p-4 mb-6">
                     <div className="grid md:grid-cols-2 mb-4">
                         <div className="space-y-2">
-                            <h1 className="text-base md:text-xl lg:text-2xl font-bold leading-7 lg:leading-9 text-gray-800">Order #{items.id} | Table Number: {items.table_number}</h1>
+                            <h1 className="text-base md:text-xl lg:text-2xl font-bold leading-7 lg:leading-9 text-gray-800">Order #{items.id} | Order Number: {items.order_number}</h1>
                             <p className="text-sm font-bold leading-6 text-gray-600">Customer Name: {items.user_name}</p>
                         </div>
 
@@ -37,6 +37,7 @@ const Dashboard = ( {order, od} ) => {
                                     <>
                                         <option value={items.progress} className="">{items.progress}</option>
                                         <option value="Done">Done</option>
+                                        <option value="Ready">Ready</option>
                                     </>
                                 ) : (
                                     <option value="Done">Done</option>
@@ -45,22 +46,27 @@ const Dashboard = ( {order, od} ) => {
                         </div>  
                     </div>
                     <div className="">
-                            <div className="grid grid-cols-4 gap-4 mb-2">
+                            <div className="grid grid-cols-5 gap-4 mb-2">
                                 <p className="font-bold text-sm md:text-lg">Item</p>
                                 <p className="font-bold text-sm md:text-lg">Unit Price</p>
                                 <p className="font-bold text-sm md:text-lg">Qty</p>
                                 <p className="font-bold text-sm md:text-lg">SubTotal</p>
+                                <p className="font-bold text-sm md:text-lg">Transaction Proof</p>
                             </div>
                         {od.filter(details => details.order_id == items.id).map((order_details, index) => (
-                            <div className="grid grid-cols-4 gap-4" key={index}>
+                            <div className="grid grid-cols-5 gap-4" key={index}>
                                 <div className="w-3/4 overflow-x-auto">
                                     <p className="font-semibold whitespace-nowrap text-sm md:text-base">{order_details.menu_name}</p> 
                                 </div>          
                                 <p className="font-semibold text-sm md:text-base">{order_details.price}</p>
                                 <p className="border border-slate-200 font-semibold text-sm md:text-base w-min p-1 px-3">{order_details.qty}</p>
                                 <p className="font-semibold text-sm md:text-base">{order_details.qty * order_details.price}</p>
+                                <a href={items.image} target="_blank">
+                                    <p>Bukti</p>
+                                </a>
                             </div>
                         ))}
+
                         <p className="text-lg font-bold mt-4">Total Price: <span className="text-[#42754C]">{od.filter(details => details.order_id == items.id).reduce((total, order_details) => total + (order_details.qty * order_details.price), 0)}</span></p>
                     </div>
                     <button type="submit" onClick={() => handleSelected(items.order_id)} className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mt-4">Submit</button>

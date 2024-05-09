@@ -48,8 +48,9 @@ class OrderController extends Controller
         } else {
             return back();
         }
+        $order->status = "Paid";
+        $order->progress = "Preparing";
         $order->save();
-        $order->order_id = "ORDER #".$order->id;
         $order->order_number = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 5) . str_pad((string)$order->id, 2, '0', STR_PAD_LEFT);
         $order->save();
         for ($i = 0; $i < count($request->name); $i++) {
@@ -67,9 +68,7 @@ class OrderController extends Controller
             $od->save();
             // OrderDetail::create(['user_name' => $user, 'menu_name' => $name, 'qty' => $quantity, 'price' => $menu->price*$quantity]);
         }
-        // Set your Merchant Server Key
-        
-        
+        // Set your Merchant Server Key 
         return redirect('/history');
         // \Midtrans\Config::$serverKey = config('midtrans.server_key');
         // // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
