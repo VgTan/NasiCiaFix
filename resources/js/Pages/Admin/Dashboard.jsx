@@ -125,14 +125,14 @@ const Dashboard = ({ order, od }) => {
                                                 </p>
                                             </div>
                                             <p className="font-semibold text-sm md:text-base">
-                                                {order_details.price}
+                                            {order_details.price.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                             </p>
                                             <p className="border border-slate-200 font-semibold text-sm md:text-base w-min p-1 px-3">
                                                 {order_details.qty}
                                             </p>
                                             <p className="font-semibold text-sm md:text-base">
-                                                {order_details.qty *
-                                                    order_details.price}
+                                                {(order_details.qty *
+                                                    order_details.price).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                             </p>
                                         </div>
                                     ))}
@@ -162,9 +162,9 @@ const Dashboard = ({ order, od }) => {
                                             )
                                             .reduce(
                                                 (total, order_details) =>
-                                                    total +
+                                                    (total +
                                                     order_details.qty *
-                                                        order_details.price,
+                                                        order_details.price),
                                                 0
                                             )}
                                     </span>
