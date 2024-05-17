@@ -108,9 +108,6 @@ const Dashboard = ({ order, od }) => {
                                     <p className="font-bold text-sm md:text-lg">
                                         SubTotal
                                     </p>
-                                    <p className="font-bold text-sm md:text-lg">
-                                        Transaction Proof
-                                    </p>
                                 </div>
                                 {od
                                     .filter(
@@ -137,20 +134,24 @@ const Dashboard = ({ order, od }) => {
                                                 {order_details.qty *
                                                     order_details.price}
                                             </p>
-                                            <a
-                                                onClick={(e) =>
-                                                    handleClick(items.id)
-                                                }
-                                                href={items.image}
-                                                target="_blank"
-                                            >
-                                                <p className="underline font-bold text-blue-400">
-                                                    Bukti
-                                                </p>
-                                            </a>
                                         </div>
                                     ))}
-
+                                    <div className="">
+                                        <p className="font-bold text-sm md:text-lg">
+                                            Transaction Proof
+                                        </p>
+                                        <a
+                                            onClick={(e) =>
+                                                handleClick(items.id)
+                                            }
+                                            href={items.image}
+                                            target="_blank"
+                                        >
+                                            <p className="underline font-bold text-blue-400">
+                                                Bukti
+                                            </p>
+                                        </a>
+                                    </div>
                                 <p className="text-lg font-bold mt-4">
                                     Total Price:{" "}
                                     <span className="text-[#42754C]">

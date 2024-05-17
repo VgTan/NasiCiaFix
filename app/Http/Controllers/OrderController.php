@@ -41,7 +41,7 @@ class OrderController extends Controller
             if (!file_exists('images/bukti/')) {
                 mkdir('images/bukri/', 0777, true);
             }
-            $fileName = bcrypt($file->getClientOriginalName()) . '.' .$file->getClientOriginalExtension();
+            $fileName = $file->getClientOriginalName() . '.' .$file->getClientOriginalExtension();
             $file->move('images/bukti/', $fileName);
 
             $order->image = 'images/bukti/' . $fileName;
