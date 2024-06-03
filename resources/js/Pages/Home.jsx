@@ -5,6 +5,7 @@ import Card from "@/Components/Card/Card";
 import { MdOutlineSearch } from "react-icons/md";
 import { AiOutlineCompass } from "react-icons/ai";
 import { TbShoppingBagPlus } from "react-icons/tb";
+import { router } from "@inertiajs/react";
 
 const Home = ({ menus }) => {
     const storedItems = JSON.parse(localStorage.getItem('selectedItems')) || {};
@@ -66,7 +67,14 @@ const Home = ({ menus }) => {
     }, [search, originalItems]);
 
     const handleAddToCart = () => {
-        setIsCartOpen(true);
+        router.post("/add-cart", {}, {
+            onSuccess: () => {
+                setIsCartOpen(true);
+            },
+            onError: (error) => {
+                console.error("Error adding to cart:", error);
+            }
+        });
     };
 
     return (
@@ -594,6 +602,7 @@ const Home = ({ menus }) => {
                                         quantity != 0 ? (
                                             updateSelectedItems(id, quantity),
                                             localStorage.setItem('selectedItems', JSON.stringify(storedItems)),
+                                            
                                             <li key={id} className="flex py-2 px-4 flex-row justify-between border-b border-gray-200">
                                                 <span className="text-left mr-5">
                                                 {" "}
@@ -615,8 +624,10 @@ const Home = ({ menus }) => {
                                                     })}
                                                 </span>
                                             </li>
+                                            
                                         ) : null
                                 )}
+                                
                             </ul>
                             <div className="mt-6 sm:flex sm:gap-4">
                             <button onClick={() => setIsCartOpen(false)} className="inline-block w-full rounded-lg bg-[#42754ce0] px-5 py-3 text-center text-sm font-semibold text-white sm:w-auto">

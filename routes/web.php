@@ -32,6 +32,7 @@ Route::controller(MenuController::class)->group(function() {
 Route::controller(OrderController::class)->group(function() {
     Route::post('/checkout', 'order')->middleware(LoggedIn::class);
     Route::get('/history', 'history')->name("history")->middleware(LoggedIn::class);
+    Route::post('/add-cart', 'addCart')->name("history")->middleware(LoggedIn::class);
 });
 
 Route::controller(MidtransController::class)->group(function() {

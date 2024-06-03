@@ -10,6 +10,14 @@ use Inertia\Inertia;
 
 class OrderController extends Controller
 {
+    public function addCart(Request $request)
+    {
+        return back();
+        // return Inertia::render('setOrder', [
+        //     'selectedItems' => $selectedItems,
+        //     'menus' => $menus,
+        // ]);
+    }
     public function history() {
         $user = Auth()->user();
         $order = Order::where('user_id', $user->id)->get();
@@ -56,7 +64,9 @@ class OrderController extends Controller
         for ($i = 0; $i < count($request->name); $i++) {
             $name = $request->name[$i];
             $quantity = $request->qty[$i];
+            // dd($quantity);
             $menu = Menu::where('name', $name)->first();
+            $menu->update(['stock' => ($menu->stock - $quantity)]);
             
             $od = new OrderDetail;
             $od->order_id = $order->id;

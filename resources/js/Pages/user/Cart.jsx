@@ -4,7 +4,7 @@ import { router } from "@inertiajs/react";
 import { TiArrowBackOutline } from "react-icons/ti";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
-const Cart = ({ menus }) => {
+const Cart = ({AllMenu}) => {
     const [storedItems, setStoredItems] = useState(
         JSON.parse(localStorage.getItem("selectedItems")) || {}
     );
@@ -18,7 +18,7 @@ const Cart = ({ menus }) => {
         const names = Object.entries(storedItems)
             .map(([id, quantity]) => {
                 return quantity !== 0
-                    ? menus.find((menu) => menu.id == id).name
+                    ? AllMenu.find((menu) => menu.id == id).name
                     : null;
             })
             .filter((name) => name !== null);
@@ -45,7 +45,7 @@ const Cart = ({ menus }) => {
     };
     const total_price = Object.entries(storedItems).reduce(
         (total, [id, quantity]) => {
-            const menu = menus.find((menu) => menu.id == id);
+            const menu = AllMenu.find((menu) => menu.id == id);
             if (menu) {
                 return total + menu.price * quantity;
             } else {
@@ -94,7 +94,7 @@ const Cart = ({ menus }) => {
                                         <div className="h-20 w-20 md:h-32 md:w-32 flex-shrink-0 overflow-hidden rounded-md border border-gray-200 shadow-md">
                                             <img
                                                 src={`${
-                                                    menus.find(
+                                                    AllMenu.find(
                                                         (menu) => menu.id == id
                                                     ).image
                                                 }`}
@@ -110,7 +110,7 @@ const Cart = ({ menus }) => {
                                                             className="border-0 md:text-lg text-md"
                                                             type="text"
                                                             value={
-                                                                menus.find(
+                                                                AllMenu.find(
                                                                     (menu) =>
                                                                         menu.id ==
                                                                         id
@@ -124,7 +124,7 @@ const Cart = ({ menus }) => {
                                                         className="-mt-3 border-0 md:text-right md:text-lg text-[#42754C]"
                                                         type="text"
                                                         value={`${(
-                                                            menus.find(
+                                                            AllMenu.find(
                                                                 (menu) =>
                                                                     menu.id ==
                                                                     id

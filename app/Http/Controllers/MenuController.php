@@ -20,7 +20,7 @@ class MenuController extends Controller
         $AllMenu = Menu::all();
         // dd($AllMenu);
         return Inertia::render('user/Cart', [
-            'menus'=> $AllMenu
+            'AllMenu'=> $AllMenu
         ]);
     }
 
