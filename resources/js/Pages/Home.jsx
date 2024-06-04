@@ -208,7 +208,6 @@ const Home = ({ menus }) => {
                                 </ul>
                             </div>
                         </div>
-                       
                         {search != '' ? (
                             searchResults.length > 0 ? (
                                 <div className="md:flex-1 md:pl-[80px] space-y-[50px]">
@@ -242,6 +241,46 @@ const Home = ({ menus }) => {
                                 </div>
                         )): (
                             <div className="md:flex-1 md:pl-[80px] space-y-[50px]">
+                                <div id="Recommendation" className="recommendation">
+                                    <div className="mb-3 top-0">
+                                        <div className="uppercase text-[#222126] text-[14px] md:text-[32px] font-extrabold mb-7 md:mb-[18px]">RECOMMENDATION</div>
+                                    </div>
+                                    <div className="flex flex-wrap gap-5">
+                                        {menus
+                                            .filter(
+                                                (menu) =>
+                                                    menu.name === "Ayam Cabe Ijo"
+                                                    || menu.name == "Dalgona Milk"
+                                                    || menu.name == "Udang Sambel Matah"
+                                                    || menu.name == "Beef Blackpepper"
+                                                    || menu.name == "Salmon Mentai"
+                                                    
+                                            )
+                                            .map((menu) => (
+                                                <div className="all_menu">
+                                                <Card
+                                                    id={menu.id}
+                                                    name={menu.name}
+                                                    price={menu.price}
+                                                    desc={menu.description}
+                                                    img = {menu.image}
+                                                    stock = {menu.stock}
+                                                    addSelectedItems={
+                                                        addSelectedItems
+                                                    }
+                                                    minusSelectedItems={
+                                                        minusSelectedItems
+                                                    }
+                                                    quantity={
+                                                        selectedItems[menu.id] || 0
+                                                    }
+                                                />
+                                                </div>
+                                            ))}
+                                    </div>
+                                    <div className="flex flex-wrap gap-5">
+                                    </div>
+                                </div>
                                 <div id="RiceBowl" className="Rice Bowl">
                                     {/* Chicken Rice Bowl */}
                                     <div className="mb-3 top-0">
