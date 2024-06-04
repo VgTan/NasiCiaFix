@@ -456,8 +456,8 @@ const Home = ({ menus }) => {
                             </div>
                             {/* MENTAI RICE */}
                             <div className="MENTAI RICE mt-10">
-                                <div className="mb-5 sticky top-0">
-                                    <div id="Mentai" className="text-4xl">MENTAI RICE</div>
+                                <div className="mb-5 sticky top-0" id="Mentai">
+                                    <div id="Mentai Rice" className="text-4xl">MENTAI RICE</div>
                                 </div>
                                 <div className="flex flex-wrap gap-5 justify-start">
                                     {menus
