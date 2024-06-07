@@ -77,4 +77,12 @@ class AdminController extends Controller
         $menu->update(['stock' => $request->stock]);
         return back();
     }
+
+    public function addMenuIndex() {
+        $menus = Menu::all();
+
+        return Inertia::render('Admin/addMenu', [
+            'menus' => $menus
+        ]);
+    }
 }
