@@ -22,11 +22,13 @@ class OrderController extends Controller
         $user = Auth()->user();
         $order = Order::where('user_id', $user->id)->get();
         $od = OrderDetail::all();
+        $menu = Menu::all();
         // dd($od);
         return Inertia::render('user/History', [
             'user' => $user,
             'order' => $order,
             'od' => $od,
+            'menu' => $menu
         ]);
     }
     public function order(Request $request) {
@@ -42,7 +44,7 @@ class OrderController extends Controller
         ]);
         $order = new Order;
         $order->user_id = $user->id;
-        $order->user_name = $user->name;
+        // $order->user_name = $user->name;
         $order->total_price = $request->total_price_tax;
         if ($request->hasFile('proof')) {
             $file = $request->file('proof');
@@ -68,12 +70,18 @@ class OrderController extends Controller
             $menu = Menu::where('name', $name)->first();
             $menu->update(['stock' => ($menu->stock - $quantity)]);
             
+            $newPrice = $menu->price - $menu->price * $menu->discounted_price/100;
             $od = new OrderDetail;
             $od->order_id = $order->id;
-            $od->user_name = $user->name;
-            $od->menu_name = $name;
+            $od->user_id = $user->id;
+            $od->menu_id = $menu->id;
             $od->qty = $quantity;
-            $od->price = $menu->price * $quantity;
+            if($od->discounted_price) {
+                $od->price = $newPrice * $quantity;
+            }
+            else {
+                $od->price = $menu->price * $quantity;
+            }
 
             $od->save();
             // OrderDetail::create(['user_name' => $user, 'menu_name' => $name, 'qty' => $quantity, 'price' => $menu->price*$quantity]);

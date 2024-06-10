@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
             $table->String('order_id');
-            $table->String('user_name');
-            $table->String('menu_name')->fillable();
+            $table->String('user_id');
+            $table->String('menu_id')->fillable();
             $table->integer('qty');
             $table->integer('price');
             // $table->enum('status', ['Unpaid', 'Paid'])->default('Unpaid');

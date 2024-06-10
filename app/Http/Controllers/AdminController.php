@@ -42,9 +42,13 @@ class AdminController extends Controller
     public function dash() {
         $order = Order::all();
         $od = OrderDetail::all();
+        $user = User::all();
+        $menu = Menu::all();
         return Inertia::render('Admin/Dashboard', [
             'order' => $order,
-            'od' => $od
+            'od' => $od,
+            'user' => $user,
+            'menu' => $menu
         ]);
     }
 
@@ -84,5 +88,62 @@ class AdminController extends Controller
         return Inertia::render('Admin/addMenu', [
             'menus' => $menus
         ]);
+    }
+
+    public function newMenu(Request $request) {
+        // dd($request);
+        $val = $request->validate([
+            'name' => 'required|string',
+            'price' => 'required|integer|min:0',
+            'stock' => 'required|min:0',
+            'desc' => 'required',
+        ]);
+        if($val) {
+            $newMenu = new Menu;
+            $newMenu->name = $request->name;
+            if($request->cat == null) {
+                $newMenu->category = $request->newCat;
+            }
+            else
+            {
+                $newMenu->category = $request->cat;
+            }
+            $newMenu->price = $request->price;
+            $newMenu->stock = $request->stock;
+            $newMenu->description = $request->desc;
+            if ($request->hasFile('img')) {
+                $file = $request->file('img');
+                if (!file_exists('images/menus/')) {
+                    mkdir('images/menus/', 0777, true);
+                }
+                $fileName = $file->getClientOriginalName() . '.' .$file->getClientOriginalExtension();
+                $file->move('images/menus/', $fileName);
+    
+                $newMenu->image = 'images/menus/' . $fileName;
+            } else {
+                $newMenu->image = 'images/logo.png';
+            }
+            $newMenu->save();
+            return back();
+        }       
+    }
+
+    public function addDisc(Request $request) {
+        $val = $request->validate([
+            'disc' => 'required|max:100|min:0',
+            'selectedMenus' => 'required'
+        ]);
+        if($val)
+        {
+            // dd($request->disc);
+            for ($i = 0; $i < count($request->selectedMenus); $i++) {
+                $id = $request->selectedMenus[$i];
+                $menu = Menu::find($id);
+                $menu->update(['discounted_price' => $request->disc]);
+                // dd($menu->discounted_price);
+            }
+        }
+        return back();
+
     }
 }

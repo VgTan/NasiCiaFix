@@ -3,13 +3,18 @@ import { router } from "@inertiajs/react";
 import { useState } from "react";
 import { MdOutlineHistoryEdu } from "react-icons/md";
 
-const History = ({ user, order, od, fail}) => {
+const History = ({ user, order, od, menu, fail}) => {
     const [order_id, setOrderId] = useState('');
     const [total_price, setTotalPrice] = useState('');
     const handlePick = (index, total) => {
         setOrderId(index);
         setTotalPrice(total);
     }
+    
+    const getMenuNameById = (id, menu) => {
+        const menuItem = menu.find(item => item.id == id);
+        return menuItem ? menuItem.name : 'Unknown';
+    };
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -62,7 +67,7 @@ const History = ({ user, order, od, fail}) => {
                             </div>
                             <div className="grid grid-cols-1">
                             {od.filter(details => details.order_id == orderItem.id).map((details, key) => (
-                                <p key={key} className="text-sm md:text-lg font-semibold">{details.qty}x {details.menu_name}</p>
+                                <p key={key} className="text-sm md:text-lg font-semibold">{details.qty}x {getMenuNameById(details.menu_id, menu)}</p>
                             ))}
                             </div>
                         </div>

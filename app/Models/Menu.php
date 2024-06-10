@@ -9,5 +9,5 @@ class Menu extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['stock'];
+    protected $fillable = ['stock', 'discounted_price'];
 }

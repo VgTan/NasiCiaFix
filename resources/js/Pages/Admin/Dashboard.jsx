@@ -3,10 +3,30 @@ import { useState } from "react";
 import { MdOutlineHistoryEdu } from "react-icons/md";
 import NavbarAdmin from "@/Components/NavbarAdmin";
 
-const Dashboard = ({ order, od }) => {
+const Dashboard = ({ order, od, user, menu }) => {
     const [update_prog, setUpdateProg] = useState("");
     const [id, setId] = useState("");
     const [Proof, setSelectedProof] = useState();
+
+    const getUserNameById = (id, user) => {
+        const username = user.find((person) => person.id == id);
+        return username ? username.name : "Unknown";
+    };
+
+    const getMenuNameById = (id, menu) => {
+        const menuItem = menu.find((item) => item.id == id);
+        return menuItem ? menuItem.name : "Unknown";
+    };
+
+    const getPriceById = (id, menu) => {
+        const menuItem = menu.find((item) => item.id == id);
+        const itemPrice = menuItem.price;
+        if (menuItem.discounted_price) {
+            return newPrice(menuItem.discounted_price, itemPrice);
+        } else {
+            return itemPrice;
+        }
+    };
 
     const handleSelected = (selected_id) => {
         setId(selected_id);
@@ -18,6 +38,10 @@ const Dashboard = ({ order, od }) => {
     };
     const handleClick = (orderId) => {
         setSelectedProof(orderId);
+    };
+    const newPrice = (disc_val, curr_price) => {
+        const newPrice = curr_price - (curr_price * disc_val) / 100;
+        return newPrice;
     };
     return (
         <>
@@ -47,7 +71,8 @@ const Dashboard = ({ order, od }) => {
                                         {items.order_number}
                                     </h1>
                                     <p className="text-sm font-bold leading-6 text-gray-600">
-                                        Customer Name: {items.user_name}
+                                        Customer Id:{" "}
+                                        {getUserNameById(items.user_id, user)}
                                     </p>
                                 </div>
 
@@ -121,37 +146,53 @@ const Dashboard = ({ order, od }) => {
                                         >
                                             <div className="w-3/4 overflow-x-auto">
                                                 <p className="font-semibold whitespace-nowrap text-sm md:text-base">
-                                                    {order_details.menu_name}
+                                                    {getMenuNameById(
+                                                        order_details.menu_id,
+                                                        menu
+                                                    )}
                                                 </p>
                                             </div>
                                             <p className="font-semibold text-sm md:text-base">
-                                            {order_details.price.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                <div className="">
+                                                    {getPriceById(
+                                                        order_details.menu_id,
+                                                        menu
+                                                    ).toLocaleString("id-ID", {
+                                                        style: "currency",
+                                                        currency: "IDR",
+                                                    })}
+                                                </div>
                                             </p>
                                             <p className="border border-slate-200 font-semibold text-sm md:text-base w-min p-1 px-3">
                                                 {order_details.qty}
                                             </p>
                                             <p className="font-semibold text-sm md:text-base">
-                                                {(order_details.qty *
-                                                    order_details.price).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                {(
+                                                    order_details.qty *
+                                                    getPriceById(
+                                                        order_details.menu_id,
+                                                        menu)
+                                                ).toLocaleString("id-ID", {
+                                                    style: "currency",
+                                                    currency: "IDR",
+                                                })}
                                             </p>
                                         </div>
                                     ))}
-                                    <div className="">
-                                        <p className="font-bold text-sm md:text-lg">
-                                            Transaction Proof
+                                <div className="">
+                                    <p className="font-bold text-sm md:text-lg">
+                                        Transaction Proof
+                                    </p>
+                                    <a
+                                        onClick={(e) => handleClick(items.id)}
+                                        href={items.image}
+                                        target="_blank"
+                                    >
+                                        <p className="underline font-bold text-blue-400">
+                                            Bukti
                                         </p>
-                                        <a
-                                            onClick={(e) =>
-                                                handleClick(items.id)
-                                            }
-                                            href={items.image}
-                                            target="_blank"
-                                        >
-                                            <p className="underline font-bold text-blue-400">
-                                                Bukti
-                                            </p>
-                                        </a>
-                                    </div>
+                                    </a>
+                                </div>
                                 <p className="text-lg font-bold mt-4">
                                     Total Price:{" "}
                                     <span className="text-[#42754C]">
@@ -162,11 +203,16 @@ const Dashboard = ({ order, od }) => {
                                             )
                                             .reduce(
                                                 (total, order_details) =>
-                                                    (total +
+                                                    total +
                                                     order_details.qty *
-                                                        order_details.price),
+                                                    getPriceById(
+                                                        order_details.menu_id,
+                                                        menu),
                                                 0
-                                            )}
+                                            ).toLocaleString("id-ID", {
+                                                style: "currency",
+                                                currency: "IDR",
+                                            })}
                                     </span>
                                 </p>
                             </div>

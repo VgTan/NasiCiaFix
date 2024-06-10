@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             // $table->String('order_id')->nullable();
             $table->String('user_id');
-            $table->String('user_name');
+            // $table->String('user_name');
             $table->String('order_number')->default('');
             $table->integer('total_price');
             $table->enum('progress', ['Done', 'Preparing', 'Waiting', 'Ready'])->default('Waiting');

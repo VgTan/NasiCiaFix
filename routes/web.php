@@ -51,6 +51,7 @@ Route::controller(AdminController::class)->group(function() {
 
     Route::get('/addmenu', 'addMenuIndex')->middleware(isAdmin::class);;
     Route::post('/add-menu', 'newMenu')->middleware(isAdmin::class);;
+    Route::post('/discount', 'addDisc')->middleware(isAdmin::class);;
 
     Route::get('/menu-stock', 'menuStockIndex')->middleware(isAdmin::class);;
     Route::post('/set-stock', 'setStock')->middleware(isAdmin::class);

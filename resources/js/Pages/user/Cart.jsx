@@ -4,7 +4,7 @@ import { router } from "@inertiajs/react";
 import { TiArrowBackOutline } from "react-icons/ti";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
-const Cart = ({AllMenu}) => {
+const Cart = ({ AllMenu }) => {
     const [storedItems, setStoredItems] = useState(
         JSON.parse(localStorage.getItem("selectedItems")) || {}
     );
@@ -34,6 +34,11 @@ const Cart = ({AllMenu}) => {
         setQty(quan);
     }, []);
 
+    const newPrice = (disc_val, curr_price) => {
+        const newPrice = curr_price - (curr_price * disc_val) / 100;
+        return newPrice;
+    };
+
     const handleQuantityChange = (id, delta) => {
         const newQuantity = storedItems[id] + delta;
         if (newQuantity >= 0) {
@@ -47,7 +52,13 @@ const Cart = ({AllMenu}) => {
         (total, [id, quantity]) => {
             const menu = AllMenu.find((menu) => menu.id == id);
             if (menu) {
-                return total + menu.price * quantity;
+                if(menu.discounted_price) {
+                    return total + newPrice(menu.discounted_price, menu.price) * quantity;
+                }
+                else {
+                    return total + menu.price * quantity;
+
+                }
             } else {
                 return total;
             }
@@ -61,7 +72,7 @@ const Cart = ({AllMenu}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        localStorage.setItem('selectedItems', JSON.stringify({}));
+        localStorage.setItem("selectedItems", JSON.stringify({}));
         router.post("/checkout", { total_price_tax, name, qty, proof });
     };
 
@@ -120,25 +131,73 @@ const Cart = ({AllMenu}) => {
                                                             disabled
                                                         />
                                                     </h3>
-                                                    <input
-                                                        className="-mt-3 border-0 md:text-right md:text-lg text-[#42754C]"
-                                                        type="text"
-                                                        value={`${(
-                                                            AllMenu.find(
-                                                                (menu) =>
-                                                                    menu.id ==
-                                                                    id
-                                                            ).price * quantity
-                                                        ).toLocaleString(
-                                                            "id-ID",
-                                                            {
-                                                                style: "currency",
-                                                                currency: "IDR",
-                                                            }
-                                                        )}`}
-                                                        name="price"
-                                                        disabled
-                                                    />
+                                                    {AllMenu.find(
+                                                        (menu) => menu.id == id
+                                                    ) &&
+                                                    AllMenu.find(
+                                                        (menu) => menu.id == id
+                                                    ).discounted_price ? (
+                                                        <div className="">
+                                                            <input
+                                                                className="-mt-3 border-0 md:text-right md:text-lg text-[#42754C]"
+                                                                type="text"
+                                                                value={(
+                                                                    newPrice(
+                                                                        AllMenu.find(
+                                                                            (
+                                                                                menu
+                                                                            ) =>
+                                                                                menu.id ==
+                                                                                id
+                                                                        )
+                                                                            .discounted_price,
+                                                                        AllMenu.find(
+                                                                            (
+                                                                                menu
+                                                                            ) =>
+                                                                                menu.id ==
+                                                                                id
+                                                                        ).price
+                                                                    ) * quantity
+                                                                ).toLocaleString(
+                                                                    "id-ID",
+                                                                    {
+                                                                        style: "currency",
+                                                                        currency:
+                                                                            "IDR",
+                                                                    }
+                                                                )}
+                                                                name="price"
+                                                                disabled
+                                                            />
+                                                        </div>
+                                                    ) : (
+                                                        <div className="">
+                                                            <input
+                                                                className="-mt-3 border-0 md:text-right md:text-lg text-[#42754C]"
+                                                                type="text"
+                                                                value={(
+                                                                    AllMenu.find(
+                                                                        (
+                                                                            menu
+                                                                        ) =>
+                                                                            menu.id ==
+                                                                            id
+                                                                    ).price *
+                                                                    quantity
+                                                                ).toLocaleString(
+                                                                    "id-ID",
+                                                                    {
+                                                                        style: "currency",
+                                                                        currency:
+                                                                            "IDR",
+                                                                    }
+                                                                )}
+                                                                name="price"
+                                                                disabled
+                                                            />
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
                                             <p className="hidden md:block md:text-sm md:ml-5 md:mb-2 md:font-thin">
@@ -218,10 +277,6 @@ const Cart = ({AllMenu}) => {
                             })}
                         </p>
                     </div>
-                    {/* <div className="flex justify-between mb-10 font-semibold items-center">
-                        <p className="">Table Number:</p>
-                        <input type="number" className="w-1/3" value={table_num} onChange={(e) => setTableNum(e.target.value)}/>
-                    </div> */}
                     <div className="drop-shadow-sm">
                         <button
                             type="submit"
@@ -262,7 +317,12 @@ const Cart = ({AllMenu}) => {
                                     aria-modal="true"
                                     aria-labelledby="modal-headline"
                                 >
-                                    <button onClick={(e) => setisClicked(false)} className="absolute right-5 top-1 text-xl font-extrabold text-red-500 hover:text-red-900 transition duration-500">x</button>
+                                    <button
+                                        onClick={(e) => setisClicked(false)}
+                                        className="absolute right-5 top-1 text-xl font-extrabold text-red-500 hover:text-red-900 transition duration-500"
+                                    >
+                                        x
+                                    </button>
                                     <div>
                                         <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
                                             <svg
