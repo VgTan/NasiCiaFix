@@ -6,6 +6,9 @@ const addMenu = ({ menus }) => {
     const [add, setAdd] = useState(false);
     const [disc, setDiscount] = useState();
     const [newCat, setNewCat] = useState();
+    const [isdelete, setDelete] = useState(false);
+    const [deletedItem, setDeletedItem] = useState();
+
     const [cat, setCat] = useState();
     const [isNewCat, setIsNewCat] = useState(false);
     const [selectedMenus, setSelectedMenus] = useState([]);
@@ -91,6 +94,21 @@ const addMenu = ({ menus }) => {
         } catch (error) {
             console.error("Error adding menu:", error);
         }
+    };
+
+    const handleRemove = (id) => {
+        const menuItem = menus.find(item => item.id == id).name
+        setDeletedItem(menuItem);
+
+        router.post(
+            "/removemenu",
+            { id },
+            {
+                onSuccess() {
+                    setDelete(true);
+                },
+            }
+        );
     };
     return (
         <div>
@@ -246,14 +264,19 @@ const addMenu = ({ menus }) => {
                                 </div>
                             </form>
                         </div>
-                        <div className="grid grid-cols-4 px-3 py-2 text-2xl font-bold border-b-[1px] border-black text-center">
+                        {isdelete && 
+                        <div className="text-lg text-center text-red-500">
+                            {deletedItem} is Deleted    
+                        </div>}
+                        <div className="grid grid-cols-5 px-3 py-2 text-2xl font-bold border-b-[1px] border-black text-center">
                             <p>Menu Name</p>
                             <p>Normal Price</p>
                             <p>New Price</p>
                             <p>Select</p>
+                            <p>Remove Menu</p>
                         </div>
                         {menus.map((menu) => (
-                            <div className="grid grid-cols-4 p-3 border-b-[1px] border-black items-center">
+                            <div className="grid grid-cols-5 p-3 border-b-[1px] border-black items-center">
                                 <p className="text-xl">{menu.name}</p>
                                 <p className="text-center font-bold space-x-1">
                                     {menu.price.toLocaleString("id-ID", {
@@ -278,6 +301,13 @@ const addMenu = ({ menus }) => {
                                         name="menus"
                                         onClick={(e) => handleClick(menu.id)}
                                     />
+                                </div>
+                                <div className="flex justify-center items-center">
+                                    <button
+                                        onClick={(e) => handleRemove(menu.id)}
+                                    >
+                                        x
+                                    </button>
                                 </div>
                             </div>
                         ))}

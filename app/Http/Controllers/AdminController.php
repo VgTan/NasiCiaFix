@@ -17,6 +17,11 @@ class AdminController extends Controller
         return Inertia::render('Admin/Login');
     }
 
+    public function removeMenu(Request $request) {
+        $menu = Menu::find($request->id);
+        $menu->delete();
+        return back();
+    }
     public function loginadmin(Request $request) {
         // dd($request->all());
         $loginData = $request->validate([

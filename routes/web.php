@@ -48,6 +48,8 @@ Route::controller(AdminController::class)->group(function() {
     Route::get('/dashboard', 'dash')->name('dashboard')->middleware(isAdmin::class);
     Route::post('/admin-handle', 'handle')->middleware(isAdmin::class);
 
+    Route::post('/removemenu', 'removeMenu')->middleware(isAdmin::class);
+
 
     Route::get('/addmenu', 'addMenuIndex')->middleware(isAdmin::class);;
     Route::post('/add-menu', 'newMenu')->middleware(isAdmin::class);;
