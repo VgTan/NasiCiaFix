@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer("price");
             $table->integer("discounted_price")->nullable();
             $table->integer("stock");
+            $table->integer("like_count")->default(0);
             $table->string("image");
         });
     }

@@ -250,6 +250,7 @@ const Home = ({ menus }) => {
                                                 )
                                                 .map((menu) => (
                                                     <Card
+                                                        menus={menus}
                                                         id={menu.id}
                                                         name={menu.name}
                                                         price={menu.price}
@@ -283,52 +284,68 @@ const Home = ({ menus }) => {
                                     id="Recommendation"
                                     className="recommendation"
                                 >
-                                    <div className="mb-3 top-0">
-                                        <div className="uppercase text-[#222126] text-[14px] md:text-[32px] font-extrabold mb-7 md:mb-[18px]">
-                                            RECOMMENDATION
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-wrap gap-5">
-                                        {menus
-                                            .filter(
-                                                (menu) =>
-                                                    menu.name ===
-                                                        "Ayam Cabe Ijo" ||
-                                                    menu.name ==
-                                                        "Dalgona Milk" ||
-                                                    menu.name ==
-                                                        "Udang Sambel Matah" ||
-                                                    menu.name ==
-                                                        "Beef Blackpepper" ||
-                                                    menu.name == "Salmon Mentai"
-                                            )
-                                            .map((menu) => (
-                                                <div className="all_menu">
-                                                    <Card
-                                                        id={menu.id}
-                                                        disc={
-                                                            menu.discounted_price
-                                                        }
-                                                        name={menu.name}
-                                                        price={menu.price}
-                                                        desc={menu.description}
-                                                        img={menu.image}
-                                                        stock={menu.stock}
-                                                        addSelectedItems={
-                                                            addSelectedItems
-                                                        }
-                                                        minusSelectedItems={
-                                                            minusSelectedItems
-                                                        }
-                                                        quantity={
-                                                            selectedItems[
-                                                                menu.id
-                                                            ] || 0
-                                                        }
-                                                    />
+                                    {!menus.filter(
+                                        (menu) => menu.like_count > 0
+                                    ) ? (
+                                        <div className=""></div>
+                                    ) : (
+                                        <div className="">
+                                            <div className="mb-3 top-0">
+                                                <div className="uppercase text-[#222126] text-[14px] md:text-[32px] font-extrabold mb-7 md:mb-[18px]">
+                                                    RECOMMENDATION
                                                 </div>
-                                            ))}
-                                    </div>
+                                            </div>
+                                            <div className="flex flex-wrap gap-5">
+                                                {menus
+                                                    .sort(
+                                                        (a, b) =>
+                                                            b.like_count -
+                                                            a.like_count
+                                                    ) // Sort menus by like_count in descending order
+                                                    .slice(0, 5) // Take the top 5 elements
+                                                    .filter(
+                                                        (menu) =>
+                                                            menu.like_count > 0
+                                                    ) // Ensure like_count is greater than 0
+                                                    .map((menu) => (
+                                                        <div
+                                                            className="all_menu"
+                                                            key={menu.id}
+                                                        >
+                                                            <Card
+                                                                menus={menus}
+                                                                id={menu.id}
+                                                                disc={
+                                                                    menu.discounted_price
+                                                                }
+                                                                name={menu.name}
+                                                                price={
+                                                                    menu.price
+                                                                }
+                                                                desc={
+                                                                    menu.description
+                                                                }
+                                                                img={menu.image}
+                                                                stock={
+                                                                    menu.stock
+                                                                }
+                                                                addSelectedItems={
+                                                                    addSelectedItems
+                                                                }
+                                                                minusSelectedItems={
+                                                                    minusSelectedItems
+                                                                }
+                                                                quantity={
+                                                                    selectedItems[
+                                                                        menu.id
+                                                                    ] || 0
+                                                                }
+                                                            />
+                                                        </div>
+                                                    ))}
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                                 {menus
                                     .map((menu) => menu.category)
@@ -366,6 +383,7 @@ const Home = ({ menus }) => {
                                                             className="all_menu"
                                                         >
                                                             <Card
+                                                                menus={menus}
                                                                 id={menu.id}
                                                                 name={menu.name}
                                                                 disc={
@@ -490,39 +508,56 @@ const Home = ({ menus }) => {
                                                                   menu.id == id
                                                           ).discounted_price ? (
                                                               <div className="">
-                                                                  {(newPrice(menus.find(
-                                                                      (menu) =>
-                                                                          menu.id ==
-                                                                          id
-                                                                  )
-                                                                      .discounted_price, menus.find(
-                                                                        (menu) =>
-                                                                            menu.id ==
-                                                                            id
-                                                                    )
-                                                                        .price) * quantity).toLocaleString("id-ID", {
-                                                                            style: "currency",
-                                                                            currency: "IDR",
-                                                                        })}
+                                                                  {(
+                                                                      newPrice(
+                                                                          menus.find(
+                                                                              (
+                                                                                  menu
+                                                                              ) =>
+                                                                                  menu.id ==
+                                                                                  id
+                                                                          )
+                                                                              .discounted_price,
+                                                                          menus.find(
+                                                                              (
+                                                                                  menu
+                                                                              ) =>
+                                                                                  menu.id ==
+                                                                                  id
+                                                                          )
+                                                                              .price
+                                                                      ) *
+                                                                      quantity
+                                                                  ).toLocaleString(
+                                                                      "id-ID",
+                                                                      {
+                                                                          style: "currency",
+                                                                          currency:
+                                                                              "IDR",
+                                                                      }
+                                                                  )}
                                                               </div>
                                                           ) : (
-                                                            <div className="">
-                                                                {(menus.find(
-                                                                   (menu) =>
-                                                                       menu.id ==
-                                                                       id
-                                                               ).price * quantity).toLocaleString(
-                                                                "id-ID",
-                                                              {
-                                                                   style: "currency",
-                                                                   currency:
-                                                                       "IDR",
-                                                               }
-                                                           )
-                                                            }
-                                                            </div>
+                                                              <div className="">
+                                                                  {(
+                                                                      menus.find(
+                                                                          (
+                                                                              menu
+                                                                          ) =>
+                                                                              menu.id ==
+                                                                              id
+                                                                      ).price *
+                                                                      quantity
+                                                                  ).toLocaleString(
+                                                                      "id-ID",
+                                                                      {
+                                                                          style: "currency",
+                                                                          currency:
+                                                                              "IDR",
+                                                                      }
+                                                                  )}
+                                                              </div>
                                                           )}
-                                                          
                                                       </span>
                                                   </li>
                                               ))

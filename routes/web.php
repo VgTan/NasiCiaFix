@@ -27,6 +27,8 @@ Route::controller(AuthController::class)->group(function() {
 Route::controller(MenuController::class)->group(function() {
     Route::get('/', 'index')->name('homeMenu')->middleware(Admin::class);
     Route::get('/cart', 'cart')->middleware(Admin::class);
+    Route::post('/menu_like', 'like_handle')->middleware(Admin::class)->middleware(LoggedIn::class);
+    
 });
 
 Route::controller(OrderController::class)->group(function() {
