@@ -70,13 +70,13 @@ class OrderController extends Controller
             $menu = Menu::where('name', $name)->first();
             $menu->update(['stock' => ($menu->stock - $quantity)]);
             
-            $newPrice = $menu->price - $menu->price * $menu->discounted_price/100;
+            $newPrice = $menu->price - ($menu->price * $menu->discounted_price/100);
             $od = new OrderDetail;
             $od->order_id = $order->id;
             $od->user_id = $user->id;
             $od->menu_id = $menu->id;
             $od->qty = $quantity;
-            if($od->discounted_price) {
+            if($menu->discounted_price) {
                 $od->price = $newPrice * $quantity;
             }
             else {

@@ -15,17 +15,10 @@ const Dashboard = ({ order, od, user, menu }) => {
 
     const getMenuNameById = (id, menu) => {
         const menuItem = menu.find((item) => item.id == id);
-        return menuItem ? menuItem.name : "Unknown";
-    };
-
-    const getPriceById = (id, menu) => {
-        const menuItem = menu.find((item) => item.id == id);
-        const itemPrice = menuItem.price;
-        if (menuItem.discounted_price) {
-            return newPrice(menuItem.discounted_price, itemPrice);
-        } else {
-            return itemPrice;
+        if (!menuItem) {
+            return null;
         }
+        return menuItem ? menuItem.name : "Unknown";
     };
 
     const handleSelected = (selected_id) => {
@@ -39,10 +32,7 @@ const Dashboard = ({ order, od, user, menu }) => {
     const handleClick = (orderId) => {
         setSelectedProof(orderId);
     };
-    const newPrice = (disc_val, curr_price) => {
-        const newPrice = curr_price - (curr_price * disc_val) / 100;
-        return newPrice;
-    };
+    
     return (
         <>
             <NavbarAdmin></NavbarAdmin>
@@ -154,9 +144,8 @@ const Dashboard = ({ order, od, user, menu }) => {
                                             </div>
                                             <p className="font-semibold text-sm md:text-base">
                                                 <div className="">
-                                                    {getPriceById(
-                                                        order_details.menu_id,
-                                                        menu
+                                                    {(
+                                                        order_details.price / order_details.qty
                                                     ).toLocaleString("id-ID", {
                                                         style: "currency",
                                                         currency: "IDR",
@@ -168,10 +157,7 @@ const Dashboard = ({ order, od, user, menu }) => {
                                             </p>
                                             <p className="font-semibold text-sm md:text-base">
                                                 {(
-                                                    order_details.qty *
-                                                    getPriceById(
-                                                        order_details.menu_id,
-                                                        menu)
+                                                    order_details.price
                                                 ).toLocaleString("id-ID", {
                                                     style: "currency",
                                                     currency: "IDR",
@@ -203,13 +189,10 @@ const Dashboard = ({ order, od, user, menu }) => {
                                             )
                                             .reduce(
                                                 (total, order_details) =>
-                                                    total +
-                                                    order_details.qty *
-                                                    getPriceById(
-                                                        order_details.menu_id,
-                                                        menu),
+                                                    total + order_details.price,
                                                 0
-                                            ).toLocaleString("id-ID", {
+                                            )
+                                            .toLocaleString("id-ID", {
                                                 style: "currency",
                                                 currency: "IDR",
                                             })}
