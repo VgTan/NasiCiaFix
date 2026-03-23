@@ -303,10 +303,10 @@ const Home = ({ menus }) => {
                                                             a.like_count
                                                     ) // Sort menus by like_count in descending order
                                                     .slice(0, 5) // Take the top 5 elements
-                                                    .filter(
-                                                        (menu) =>
-                                                            menu.like_count > 0
-                                                    ) // Ensure like_count is greater than 0
+                                                    // .filter(
+                                                    //     (menu) =>
+                                                    //         menu.like_count > 0
+                                                    // ) // Ensure like_count is greater than 0
                                                     .map((menu) => (
                                                         <div
                                                             className="all_menu"

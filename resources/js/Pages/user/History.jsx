@@ -29,7 +29,7 @@ const History = ({ user, order, od, menu, fail}) => {
         <div className="pt-16 md:pt-32 px-5 md:px-28 flex font-nunito mb-10">
             <div className="w-full">
                 <div className="flex justify-center -mb-4 md:mb-0">
-                    <a href="/logout" className="font-bold text-red-500 text-xl md:text-2xl mb-4 md:mb-8 ml-2 -mt-1">LOGOUT</a>
+                    {/* <a href="/logout" className="font-bold text-red-500 text-lg md:text-2xl mb-4 md:mb-8 ml-2 -mt-1">LOGOUT</a> */}
                 </div>
                 <div className="flex flex-wrap -mb-4 md:mb-0">
                     <MdOutlineHistoryEdu className="text-xl md:text-2xl font-bold"/>
